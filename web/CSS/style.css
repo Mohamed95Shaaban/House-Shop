@@ -1,0 +1,24 @@
+
+#form {
+	width: 400px;
+	margin: 0 auto;
+}   
+
+input, textarea {
+	width: 100%;
+	background-color: #ebebeb;
+	border-radius: 3px;
+	margin: 5px 0;
+	padding: 7px 10px;
+	color: #888b8b;
+	font-size: 16px;
+}
+
+.submit{
+	background-color: #3eb3a5;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 10px;
+	text-decoration: none;
+}
