@@ -38,10 +38,13 @@ public class DealingWithDB {
         preparedStatement.executeUpdate() ;
     }
     
-    public static void update(String IDValue , String Columns , String NewValues , String TableName) throws SQLException
+    public static void update(String IDValue , String Column , String NewValue , String TableName) throws SQLException
     {
-        delete (IDValue , TableName) ;
-        insert (Columns , NewValues , TableName) ;
+        String Query = "UPDATE `"+TableName+"` SET "+Column+" = "+NewValue+" WHERE "+IDValue ;
+        PreparedStatement preparedStatement = connection.prepareStatement(Query) ;
+        preparedStatement.executeUpdate() ;
+        /*delete (IDValue , TableName) ;
+        insert (Columns , NewValues , TableName) ;*/
     }
     
     public static void delete(String Condition , String TableName) throws SQLException 
