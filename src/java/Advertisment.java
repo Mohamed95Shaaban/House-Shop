@@ -235,7 +235,6 @@ public class Advertisment {
             DB.Connect();
             Condition += " and `suspended`='0'" ;
             ResultSet res=DB.select("*", "advertisment", Condition) ; 
-            int numOfColumns = res.getMetaData().getColumnCount() ;
             while (res.next()) {
                 Advertisment temp = new Advertisment();
                 temp.setHouseID(res.getString("HouseID"));
