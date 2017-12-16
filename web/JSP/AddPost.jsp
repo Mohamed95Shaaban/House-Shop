@@ -45,7 +45,7 @@
                 <div class="line"></div>
             
             <div id="form">
-                <form action="AddPost.jsp" method="post"  enctype="multipart/form-data">
+                <form action="AddPost" method="post"  enctype="multipart/form-data">
                 <input type="text" name = "title" placeholder="Title" required>
                  <input type="number" name = "house_size" placeholder="Hoise Size meters " required>
                  <input type="number" name="house_prise"  placeholder="Hoise price L.E" required>

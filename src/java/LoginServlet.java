@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Ahmed
+ * @author Antr
  */
-@WebServlet(urlPatterns = {"/Registiration"})
-public class Registiration extends HttpServlet {
+@WebServlet(urlPatterns = {"/LoginServlet"})
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +33,11 @@ public class Registiration extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+           String eMail=request.getParameter("e-mail");
+           String password =request.getParameter("password");
+         
+           
+           
         }
     }
 

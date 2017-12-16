@@ -106,10 +106,10 @@ public class Account {
         DB.writeResultSet(DB.select("*", TableName, ""));
         
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Registiration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
         } 
         catch (SQLException ex) {
-            Logger.getLogger(Registiration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
     public boolean LogIn()
@@ -136,9 +136,9 @@ public class Account {
             
                     
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Registiration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Registiration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return Existed ; // initially false
     }
@@ -153,11 +153,11 @@ public class Account {
         DB.update(Idcondition , Column, NewValue, "Account");
         }
         catch(ClassNotFoundException ex) {
-            Logger.getLogger(Registiration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
         }
         catch(SQLException ex)
         {
-            Logger.getLogger(Registiration.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
