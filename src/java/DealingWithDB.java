@@ -22,10 +22,11 @@ public class DealingWithDB {
                    + "user=" + "root"  );
     }
     
-    public static ResultSet select(String Columns , String TableName) throws SQLException 
+    public static ResultSet select(String Columns , String TableName , String Condition) throws SQLException 
     {
             Statement statement = connection.createStatement() ;
-            String Query = "select " + Columns + " from " + TableName ;
+            String Query = "select " + Columns + " from " + TableName + " where " + Condition;
+            
             ResultSet resultset = statement.executeQuery(Query) ;
             return resultset;
             
