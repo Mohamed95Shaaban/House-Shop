@@ -11,14 +11,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Antr
  */
-@WebServlet(urlPatterns = {"/LoginServlet"})
-public class LoginServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/Profile"})
+public class Profile extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,23 +33,6 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           String eMail=request.getParameter("e-mail");
-           String password =request.getParameter("password");
-           Account account = new Account();
-           account.setE_Mail(eMail);
-           account.setPass(password);
-           boolean check = account.LogIn();
-           if(check== true){
-            HttpSession session = request.getSession(true); 
-            session.setAttribute("Current user", account.getAccountID());
-            response.sendRedirect("JSP/Home.jsp");        
-           }
-           else{
-           //ajax code
-            response.sendRedirect("index.html");
-           }
-           
-           
            
         }
     }

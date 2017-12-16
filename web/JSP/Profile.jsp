@@ -4,6 +4,7 @@
     Author     : Antr
 --%>
 
+ 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -39,15 +40,16 @@
             </ul>
         </div>
         <div id="info">
-            <form action="ProfileJsp" method="post" enctype="multipart/form-data">
+            <form action="Profile" method="post" enctype="multipart/form-data">
                 <div id="photo">
                     <input type="file" name="file" accept="image/gif, image/jpeg, image/png">  
                     <h3>Photo</h3>
                 </div>
-                <input type="text"  placeholder="name" disabled/>    
+                
+                <input type="text"  placeholder="" disabled/>    
                 <input type="text" placeholder="e-mail" disabled/>    
                 <input type="text" placeholder="password" disabled/>
-                <input type="text" placeholder="Adress" disabled/>
+                <input type="text" placeholder="phone" disabled/>
                 <button>Edit</button>  
                 <button>change</button>
 

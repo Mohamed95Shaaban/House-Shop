@@ -19,7 +19,7 @@
             <div id="nav-bar">
                 <ul id="nav-bar-list-left">
                     <li class="hover"><a href="">Home</a></li>
-                    <li class="hover"><a href="Profile.html">Profile</a></li>
+                    <li class="hover"><a href="Profile.jsp">Profile</a></li>
                 </ul>
                 <div id="logo"><img id="iLogo" src="../scr/LOGO2.png"/></div>
                 <ul id="nav-bar-list-right">
@@ -31,7 +31,7 @@
                         <a href="#">Family</a>
                          </div>   
                     </li>
-                    <li class="hover"><a href="AddPost.html">Add Post</a></li>
+                    <li class="hover"><a href="AddPost.jsp">Add Post</a></li>
                 </ul>
             </div>
             <div class="title"><p>Hello, Welcome to House Shop!</p></div>

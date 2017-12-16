@@ -36,16 +36,14 @@ public class Addpost extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-              DealingWithDB db = new DealingWithDB();
-              db.Connect();
-              int houseSize = Integer.parseInt(request.getParameter("house_size"));
-              int housePrice = Integer.parseInt(request.getParameter("house_prise"));
-              String houseType = request.getParameter("house_type");
-              String houseState = request.getParameter("house_type");
-              String houseLocation = request.getParameter("house_locattion");
-              int houseFloor = Integer.parseInt(request.getParameter("house_floor"));
-              String house_state =request.getParameter("house_state");
-              db.insert("`house_size`,`house_price`,`house_location`,`type`,`house_floor`,`Statuese`", " , " + houseSize + " , "+ housePrice + " , " +houseLocation+" , "+houseType+" , "+houseFloor+" , "+house_state, "advertisment");
+              String houseSize = request.getParameter("house_size");
+              String housePrice = request.getParameter("house_prise");
+              String houseType =  request.getParameter("house_type");
+              String houseLocattion = request.getParameter("house_locattion");
+              String houseFloor = request.getParameter("house_floor");
+              String description = request.getParameter("Description");
+              String houseState = request.getParameter("house_state");
+              String advertismentType = request.getParameter("advertisment_type");
               
         }
     }

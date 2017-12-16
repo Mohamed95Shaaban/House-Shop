@@ -46,14 +46,15 @@
             
             <div id="form">
                 <form action="AddPost" method="post"  enctype="multipart/form-data">
-                <input type="text" name = "title" placeholder="Title" required>
+               
                  <input type="number" name = "house_size" placeholder="Hoise Size meters " required>
                  <input type="number" name="house_prise"  placeholder="Hoise price L.E" required>
                  <input type="text" name="house_type" placeholder="studio/villa/...etc" required>
                  <input type="text" name="house_locattion" placeholder="House location" required>
                  <input type="number" name="house_floor" placeholder="House floor" required>
-                <textarea placeholder="Description" cols="10" rows="5" name="body" required></textarea>
+                <textarea placeholder="Description" name="Description" cols="10" rows="5" name="body" required></textarea>
                 <input type="text" name="house_state" placeholder="Finished/ half finished/etc" required>
+                <input type="number" name="advertisment_type" placeholder="1 For Rent / 0 For Sale" required>
                 <input type="file" name="file" accept="image/gif, image/jpeg, image/png"  required>
                 <input type="file" name="Mfile" accept="image/gif, image/jpeg, image/png" multiple>
                

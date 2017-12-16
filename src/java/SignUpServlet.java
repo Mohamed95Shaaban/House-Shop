@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,6 +38,16 @@ public class SignUpServlet extends HttpServlet {
             String eMail = request.getParameter("e-mail");
             String password = request.getParameter("password");
             String phone = request.getParameter("Phone");       
+            Account account = new Account();
+            account.setUser_Name(name);
+            account.setE_Mail(eMail);
+            account.setPass(password);
+            account.setPhone(phone);
+            account.SignUP();
+            HttpSession session = request.getSession(true); 
+            session.setAttribute("Current user", account.getAccountID());
+            response.sendRedirect("JSP/Home.jsp");
+
             
         }
     }
