@@ -44,6 +44,19 @@ public class Addpost extends HttpServlet {
               String description = request.getParameter("Description");
               String houseState = request.getParameter("house_state");
               String advertismentType = request.getParameter("advertisment_type");
+              /*********************************************************/
+              Advertisment advertisment = new Advertisment();
+              advertisment.setHouse_size(houseSize);
+              advertisment.setHouse_price(housePrice);
+              advertisment.setDescription(description);
+              advertisment.setType(houseType);
+              advertisment.setHouse_location(houseLocattion);
+              advertisment.setType(houseType);
+              advertisment.setHouse_floor(houseFloor);
+              advertisment.setStatus(houseState);
+              /*************************************************************/
+              
+              advertisment.AddAdvertisment();
               
         }
     }
