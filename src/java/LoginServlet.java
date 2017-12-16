@@ -6,6 +6,8 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,7 +45,10 @@ public class LoginServlet extends HttpServlet {
            if(check== true){
             HttpSession session = request.getSession(true); 
             session.setAttribute("Current user", account.getAccountID());
-            response.sendRedirect("JSP/Home.jsp");        
+            String SesseionId = account.getAccountID() ;
+            Map<String, HttpSession> sessionManger = new ConcurrentHashMap();
+          //  sessionManger.
+          //  response.sendRedirect("JSP/Home.jsp");        
            }
            else{
            //ajax code
