@@ -8,12 +8,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import javafx.application.Application;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext ;
 
 /**
  *
@@ -46,9 +48,9 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession(true); 
             session.setAttribute("Current user", account.getAccountID());
             String SesseionId = account.getAccountID() ;
-            Map<String, HttpSession> sessionManger = new ConcurrentHashMap();
-          //  sessionManger.
-          //  response.sendRedirect("JSP/Home.jsp");        
+            ServletContext sc = getServletConfig().getServletContext();
+            sc.setAttribute("session", session);
+            response.sendRedirect("JSP/Home.jsp");        
            }
            else{
            //ajax code
