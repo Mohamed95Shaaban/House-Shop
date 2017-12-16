@@ -6,6 +6,9 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,8 +47,12 @@ public class SignUpServlet extends HttpServlet {
             account.setPass(password);
             account.setPhone(phone);
             account.SignUP();
+            
             HttpSession session = request.getSession(true); 
             session.setAttribute("Current user", account.getAccountID());
+            ServletContext sc = getServletConfig().getServletContext();
+            sc.setAttribute("session", session);
+            
             response.sendRedirect("JSP/Home.jsp");
 
             
