@@ -124,13 +124,13 @@ public class Account {
             
             if (resultSet.next()) 
             {
-                User_Name=resultSet.getString(1);
-                Pass=resultSet.getString(2);
-                E_Mail=resultSet.getString(3);
-                Phone=resultSet.getString(4);
-                Type=resultSet.getString(5);
-                Picture_text=resultSet.getString(6);
-                
+                Pass=resultSet.getString(1);
+                E_Mail=resultSet.getString(2);
+                Phone=resultSet.getString(3);
+                Type=resultSet.getString(4);
+                AccountID=resultSet.getString(5);
+                User_Name=resultSet.getString(6);
+                Picture_text=resultSet.getString(7) ; 
                 Existed = true ;
             }
             
