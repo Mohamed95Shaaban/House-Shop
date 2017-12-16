@@ -1,4 +1,11 @@
+<%-- 
+    Document   : Profile
+    Created on : Dec 16, 2017, 10:20:15 AM
+    Author     : Antr
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Profile</title>

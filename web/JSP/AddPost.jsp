@@ -1,28 +1,66 @@
+<%-- 
+    Document   : ADDPOST
+    Created on : Dec 16, 2017, 10:19:37 AM
+    Author     : Antr
+--%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> Add Post </title>
+        <title>
+            Add Post
+        </title>
+        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="../CSS/homecss.css" type="text/css">
+
     </head>
+
     <body>
-        <form action="Home.html" method="get">
-            <%  
-                
-              DealingWithDB db = new DealingWithDB();
-              db.Connect();
-              int houseSize = Integer.parseInt(request.getParameter("house_size"));
-              int housePrice = Integer.parseInt(request.getParameter("house_prise"));
-              String houseType = request.getParameter("house_type");
-              String houseState = request.getParameter("house_type");
-              String houseLocation = request.getParameter("house_locattion");
-              int houseFloor = Integer.parseInt(request.getParameter("house_floor"));
-              String house_state =request.getParameter("house_state");
-              db.insert("`house_size`,`house_price`,`house_location`,`type`,`house_floor`,`Statuese`", " , " + houseSize + " , "+ housePrice + " , " +houseLocation+" , "+houseType+" , "+houseFloor+" , "+house_state, "advertisment");
-              
-                %>
-            <input type="submit" value="Home">
-        </form>
+        <div>
+            <div class="header">  
+                <img id="himg" src="../scr/header.jpg"/>
+            </div>
+            <div id="Container">
+                <div id="nav-bar">
+                    <ul id="nav-bar-list-left">
+                        <li class="hover"><a href="">Home</a></li>
+                        <li class="hover"><a href="Profile.html">Profile</a></li>
+                    </ul>
+                    <div id="logo"><img id="iLogo" src="../scr/LOGO2.png"/></div>
+                    <ul id="nav-bar-list-right">
+                        <li class="dropdown"><a class="dropdwon-link">Category</a><div class="dropdown-content">
+                                <a href="#">Diary</a>
+                                <a href="#">Personal</a>
+                                <a href="#">Holiday</a>
+                                <a href="#">Work</a>
+                                <a href="#">Family</a>
+                            </div>   
+                        </li>
+                        <li class="hover"><a href="AddPost.html">Add Post</a></li>
+                    </ul>
+                </div>
+                <div class="title"><p>Hello, Welcome to House Shop!</p></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            
+            <div id="form">
+                <form action="AddPost.jsp" method="post"  enctype="multipart/form-data">
+                <input type="text" name = "title" placeholder="Title" required>
+                 <input type="number" name = "house_size" placeholder="Hoise Size meters " required>
+                 <input type="number" name="house_prise"  placeholder="Hoise price L.E" required>
+                 <input type="text" name="house_type" placeholder="studio/villa/...etc" required>
+                 <input type="text" name="house_locattion" placeholder="House location" required>
+                 <input type="number" name="house_floor" placeholder="House floor" required>
+                <textarea placeholder="Description" cols="10" rows="5" name="body" required></textarea>
+                <input type="text" name="house_state" placeholder="Finished/ half finished/etc" required>
+                <input type="file" name="file" accept="image/gif, image/jpeg, image/png"  required>
+                <input type="file" name="Mfile" accept="image/gif, image/jpeg, image/png" multiple>
+               
+                <input type="submit" value="Post" class="submit">
+            </form>
+            </div>
+        </div>
+            </div>
     </body>
 </html>
