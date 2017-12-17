@@ -55,15 +55,17 @@ public class Addpost extends HttpServlet {
               advertisment.setHouse_location(houseLocattion);
               advertisment.setHouse_floor(houseFloor);
               advertisment.setStatus(houseState);
-              advertisment.setPhoto_text("");
+              advertisment.setPhoto_text(" ");
               advertisment.setAdvertisment_Type(advertismentType);
               advertisment.setSuspended("0");
               
               /*************************************************************/
-              ServletContext sc = getServletConfig().getServletContext();
+             
               HttpSession  session = request.getSession(true);
-              session =  (HttpSession) sc.getAttribute("session");
-              advertisment.setAccountId_fk((String) session.getAttribute("Current user"));  
+              String id =String.valueOf(session.getAttribute("Current user")) ;
+              advertisment.setAccountId_fk(id);  
+              out.println("hhhhhh => "+advertisment.getAccountId_fk());
+              log(id);
               advertisment.AddAdvertisment();
               
               response.sendRedirect("JSP/Home.jsp");

@@ -41,7 +41,7 @@
                 <div class="line"></div>
             
             <div id="form">
-                <form action="AddPost" method="post"  enctype="multipart/form-data">
+                <form action="../Addpost" method="post"  enctype="multipart/form-data">
                
                  <input type="number" name = "house_size" placeholder="Hoise Size meters " required>
                  <input type="number" name="house_prise"  placeholder="Hoise price L.E" required>

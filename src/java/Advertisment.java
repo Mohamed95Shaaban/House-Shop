@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jdk.internal.org.objectweb.asm.commons.AdviceAdapter;
+
 
 
 public class Advertisment {
@@ -133,7 +133,7 @@ public class Advertisment {
         DB.Connect();
         String Columns = "`HouseID` , `description` , `house_floor` , `house_location` , `house_price` ,"
                        + " `house_size` , `status` , `suspended` , `type` , `AccountId_fk` , `advertisment_Type` , `photo_text`" ;
-        ResultSet res = DB.select(" MAX(HouseID) ", "Advertisment", "1") ;
+        ResultSet res = DB.select(" MAX(HouseID) ", "advertisment", "1") ;
         res.next() ; 
         int LastId = Integer.valueOf(res.getString(1)) ;
         int NewId = LastId+1 ;
