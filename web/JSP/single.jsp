@@ -1,9 +1,11 @@
-<%-- 
-    Document   : single
-    Created on : Dec 16, 2017, 10:20:35 AM
-    Author     : Antr
---%>
 
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
+
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
