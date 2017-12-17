@@ -62,10 +62,11 @@ public class Addpost extends HttpServlet {
               /*************************************************************/
              
               HttpSession  session = request.getSession(true);
-              String id =String.valueOf(session.getAttribute("Current user")) ;
-              advertisment.setAccountId_fk(id);  
+              session = (HttpSession) request.getServletContext().getAttribute("session") ;
+              String userid = (String) session.getAttribute("Current user");
+              advertisment.setAccountId_fk(userid);  
               out.println("hhhhhh => "+advertisment.getAccountId_fk());
-              log(id);
+              log("555555555555555"+userid);
               advertisment.AddAdvertisment();
               
               response.sendRedirect("JSP/Home.jsp");
