@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @author Ahmed
  */
 public class Comment {
-    String comment_id , commenter_FK , Advertisment_id_FK , CommentText ;
+    private String comment_id , commenter_FK , Advertisment_id_FK , CommentText ;
 
     public Comment() {
     }
