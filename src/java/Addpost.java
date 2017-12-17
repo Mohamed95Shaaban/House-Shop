@@ -9,11 +9,13 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -41,7 +43,7 @@ public class Addpost extends HttpServlet {
               String houseType =  request.getParameter("house_type");
               String houseLocattion = request.getParameter("house_locattion");
               String houseFloor = request.getParameter("house_floor");
-              String description = request.getParameter("Description");
+              String description = request.getParameter("body");
               String houseState = request.getParameter("house_state");
               String advertismentType = request.getParameter("advertisment_type");
               /*********************************************************/
@@ -54,9 +56,17 @@ public class Addpost extends HttpServlet {
               advertisment.setType(houseType);
               advertisment.setHouse_floor(houseFloor);
               advertisment.setStatus(houseState);
-              /*************************************************************/
+              advertisment.setPhoto_text("");
               
+              /*************************************************************/
+              ServletContext sc = getServletConfig().getServletContext();
+              HttpSession  session = request.getSession(true);
+              session =  (HttpSession) sc.getAttribute("session");
+             advertisment.setAccountId_fk((String) session.getAttribute("Current user"));  
               advertisment.AddAdvertisment();
+              
+              response.sendRedirect("JSP/Home.jsp");
+              
               
         }
     }
