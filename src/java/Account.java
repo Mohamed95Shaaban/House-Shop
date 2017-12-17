@@ -103,7 +103,7 @@ public class Account {
                 + "' , '"+Phone+"', '"+"0"+"' , '"+""+"' , '" +AccountID+"'" ;
         String TableName = "account" ;
         DB.insert(Columns, Values, TableName);
-        DB.writeResultSet(DB.select("*", TableName, ""));
+        //DB.writeResultSet(DB.select("*", TableName, ""));
         
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);

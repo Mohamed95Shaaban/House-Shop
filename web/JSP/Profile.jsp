@@ -14,7 +14,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../CSS/ProfileC.css" rel="stylesheet" > 
         <link href="../CSS/homecss.css" rel="stylesheet" >    
-
+        <script type="text/javascript" src="../JS/JSProfile.js"></script>
+        <script type="text/javascript" src="../JS/jquery-3.1.0.min.js" ></script>
+        
     </head>
     <body>
         <div class="header">  
@@ -36,22 +38,23 @@
             </ul>
         </div>
         <div id="info">
-            <form action="Profile" method="post" enctype="multipart/form-data">
+            <form id="form_id" action="../ProfileServlet" method="post" enctype="multipart/form-data">
                 <div id="photo">
                     <input type="file" name="file" accept="image/gif, image/jpeg, image/png">  
                     <h3>Photo</h3>
                 </div>
                 
-                <input type="text"  placeholder="" disabled/>    
-                <input type="text" placeholder="e-mail" disabled/>    
-                <input type="text" placeholder="password" disabled/>
-                <input type="text" placeholder="phone" disabled/>
-                <button>Edit</button>  
-                <button>change</button>
+                <input type="text" name="name" placeholder="Name" id="nameID" disabled/>    
+                <input type="text" name="mail" placeholder="e-mail" id="e-mailID" disabled/>    
+                <input type="text" name="pass" placeholder="password" id="passID" disabled/>
+                <input type="text" name="phone" placeholder="phone" id="phoneID" disabled/>
+                <button type="button" id="EditID" onclick="EditFunction()">Edit</button>  
+                <button type="button" id="ChangeId" onclick="ChangeFunction();" style="display:none;">change</button>
 
 
             </form> 
         </div>
         </div>
+        
     </body>
 </html>
