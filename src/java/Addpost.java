@@ -68,7 +68,7 @@ public class Addpost extends HttpServlet {
               
               response.sendRedirect("JSP/Home.jsp");
               
-              
+              //Profile
         }
     }
 
