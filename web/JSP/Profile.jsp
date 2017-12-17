@@ -28,13 +28,9 @@
             </ul>
             <div id="logo"><img id="iLogo" src="../scr/LOGO2.png"/></div>
             <ul id="nav-bar-list-right">
-                <li class="dropdown"><a class="dropdwon-link">Category</a><div class="dropdown-content">
-                        <a href="#">Diary</a>
-                        <a href="#">Personal</a>
-                        <a href="#">Holiday</a>
-                        <a href="#">Work</a>
-                        <a href="#">Family</a>
-                    </div>   
+                <li class="dropdown"><a href="notification.jsp" class="dropdwon-link">notification</a>
+                    
+                     
                 </li>
                 <li class="hover"><a href="AddPost.html">Add Post</a></li>
             </ul>

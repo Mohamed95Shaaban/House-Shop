@@ -1,8 +1,14 @@
-<%-- 
-    Document   : Home
-    Created on : Dec 16, 2017, 10:19:55 AM
-    Author     : Antr
---%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%
+    Class.forName("com.mysql.jdbc.Driver");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
+
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,27 +43,46 @@
             <div class="title"><p>Hello, Welcome to House Shop!</p></div>
             <div class="line"></div>
             <div class="line"></div>
-            <div class="post">
-                <div class="date"><p>31 Jul</p></div>
-                <div class="post-info">
-                    <ul class="post-interactions">
-
-                        <li><img id="star" src="../scr/star.png"><a>139 Rates</a></li>
-                        <li><div class="Hline"></div></li>
-                        <li><img id="star" src="../scr/Comment2.png" alt=""><a> 21 Comment</a></li>
-                    </ul>
-                </div>
-                <div class="post-content">
-                    <h1>Lorem Ipsum Dolor Sit Amet</h1>
-                    <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitu-<br>din, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit <br>amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincid-<br>unt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti.</p>
-                    <div class="button"><a href="">Read More</a></div>
-                </div>
-            </div>
-            
-            <div class="Button1">
-                <a href="#get_in_touch">Load More</a >
-            </div>      
-              
+           <%
+                Statement Stmt = Con.createStatement();
+                ResultSet adv = Stmt.executeQuery("SELECT HouseID,photo_text,description FROM advertisment ");
+                while(adv.next())
+                {
+                    String id= adv.getString("HouseID");
+                    Statement stmt3= Con.createStatement();
+                    ResultSet rates= stmt3.executeQuery("SELECT * FROM rate WHERE Advertisment_Id_Fk="+id+"");
+                    rates.next();
+                    int rateCnt= 1;
+                    Statement stmt2= Con.createStatement();
+                    ResultSet comments= stmt2.executeQuery("SELECT * FROM comment WHERE Advertisment_Id_Fk="+id+"");
+                    comments.next();
+                    int commentCnt= 1;
+                    
+                    out.print("<div class=\"post\">");
+                    out.print("<div class=\"date\"><img src=\"../scr/"+adv.getString("photo_text")+"\" alt=\"notFound\"></div>");
+                    out.print(" <div class=\"post-info\">");
+                    out.print("<ul class=\"post-interactions\">");
+                    out.print("<li><img id=\"star\" src=\"../scr/star.png\"><a>"+rateCnt+ "Rates</a></li>");
+                    out.print("<li><div class=\"Hline\"></div></li>");
+                    out.print("<li><img id=\"star\" src=\"../scr/Comment2.png\" alt=\"notfound\"><a>"+commentCnt + " Comment</a></li>");
+                    out.print("</ul>");
+                    out.print("</div>");
+                    out.print("<div class=\"post-content\">");
+                    out.print("<p>"+adv.getString("description")+"</p>");
+                    out.print("<div class=\"button\"><a href=\"single.jsp?id="+id+"\">Read More</a></div>");
+                    out.print("</div>"); 
+                    out.print("</div>");
+                  
+                      
+                    
+                }
+                 
+                    
+                    adv.close();
+                    Stmt.close();
+                    
+                    Con.close();
+            %>             
         </div>
         
     </body>
