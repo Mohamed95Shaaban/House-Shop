@@ -98,7 +98,7 @@ public class Account {
         int NewId = LastId+1 ;
         AccountID = String.valueOf(NewId) ;
         
-        String Columns = "`user_name` , `password` , `e-mail` , `phone` , `type` , `picture_text` , `AccountId`" ;
+        String Columns = "`username` , `password` , `e-mail` , `phone` , `type` , `picture_text` , `AccountId`" ;
         String Values = "'"+User_Name+"' , '"+Pass+"' , '"+E_Mail
                 + "' , '"+Phone+"', '"+"0"+"' , '"+""+"' , '" +AccountID+"'" ;
         String TableName = "account" ;

@@ -137,7 +137,7 @@ public class Advertisment {
         res.next() ; 
         int LastId = Integer.valueOf(res.getString(1)) ;
         int NewId = LastId+1 ;
-        AccountId_fk = String.valueOf(NewId) ;
+        HouseID= String.valueOf(NewId) ;
         String Values = "'"+HouseID+"' , '"+Description+"' , '"+House_floor+"' , '"
                 +House_location+"' , '"+House_price+"' , '"+House_size+"' , '"
                 +Status+"' , '"+Suspended+"' , '"+Type+"' , '"+AccountId_fk+"' , '" + advertisment_Type+"' , '"+photo_text+"'" ;  
