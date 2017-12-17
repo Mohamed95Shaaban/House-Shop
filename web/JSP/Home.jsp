@@ -7,7 +7,7 @@
 <%
     Class.forName("com.mysql.jdbc.Driver");
     Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
-
+    
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -69,7 +69,7 @@
                     out.print("</div>");
                     out.print("<div class=\"post-content\">");
                     out.print("<p>"+adv.getString("description")+"</p>");
-                    out.print("<div class=\"button\"><a href=\"single.jsp?id="+id+"\">Read More</a></div>");
+                    out.print("<div class=\"button\"><a href=\"single.jsp?postID="+id+"\">Read More</a></div>");
                     out.print("</div>"); 
                     out.print("</div>");
                   

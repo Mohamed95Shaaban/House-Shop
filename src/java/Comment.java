@@ -65,6 +65,11 @@ public class Comment {
         {
             DealingWithDB DB = new DealingWithDB();
             DB.Connect();
+            ResultSet res = DB.select("MAX(comment_id)", "comment", "1") ;
+            res.next() ; 
+            int LastId = Integer.valueOf(res.getString(1)) ;
+            int NewId = LastId+1 ;
+            comment_id = String.valueOf(NewId) ;
             String Columns = "`comment_id`,`CommentText`,`Advertisment_Id_FK`,`commenter_FK`" ;
             String Values = "'"+comment_id+"' , '"+CommentText+"' , '"+Advertisment_id_FK+"' , '"+commenter_FK+"'" ;
             DB.insert(Columns, Values, "comment");
