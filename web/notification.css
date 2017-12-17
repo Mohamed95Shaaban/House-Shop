@@ -1,0 +1,17 @@
+#notify{
+    margin-top: 30px;
+}
+
+
+
+
+
+#notify a
+{
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    font-family: initial;
+}
+

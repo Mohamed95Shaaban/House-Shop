@@ -1,8 +1,4 @@
-<%-- 
-    Document   : ADDPOST
-    Created on : Dec 16, 2017, 10:19:37 AM
-    Author     : Antr
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
