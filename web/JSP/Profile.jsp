@@ -10,7 +10,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%
     Class.forName("com.mysql.jdbc.Driver");
-    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3304/house_buy_and_rent", "root", "");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
     Statement Stmt = Con.createStatement();
     String AccountID = (String) session.getAttribute("Current user");
     ResultSet res = Stmt.executeQuery("SELECT * FROM account WHERE `AccountId` = '" + AccountID + "'");
