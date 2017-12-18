@@ -72,6 +72,7 @@
                     out.print("<h5>House Size: " +"<input type='number' name='house_size' placeholder=\""+ adv.getString("house_size") +"\" disabled / >" + "</h5>");
                     out.print("<h5>House Status: " +"<input type='text' name='Status' placeholder=\""+ adv.getString("Status")+"\" disabled / >"  + "</h5>");
                     out.print("<h5>House Type: " +"<input type='text' name='type' placeholder=\""+ adv.getString("type")+"\" disabled / >"  + "</h5>");
+                    out.print("<a href='AdvertiserData.jsp?postID=\""+postID+"\"'>AdvertiserData</a>");
                     out.print("<div class=\"post-img\"><img src=\"../scr/post_img.PNG\" alt=\"notFound\"></div>");
                     if(userFk.equals(ID))
                         out.print("<button>Post</button>");
