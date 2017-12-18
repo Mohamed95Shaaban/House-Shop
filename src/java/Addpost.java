@@ -75,11 +75,10 @@ public class Addpost extends HttpServlet {
               InputStream is = part.getInputStream();
               out.print(is.toString());
               out.print(part.getSubmittedFileName());
-
+               
 
 //              response.sendRedirect("JSP/Home.jsp");
-              
-              //Profile
+             
         }
     }
 
