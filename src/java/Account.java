@@ -147,10 +147,10 @@ public class Account {
     {
         try
         {
-        String Idcondition = "`AccountId` = " + "'"+AccountID+"'" ;
+        String Idcondition = "`AccountId` = '"+AccountID+"'" ;
         DealingWithDB DB = new DealingWithDB() ;
         DB.Connect();
-        DB.update(Idcondition , Column, NewValue, "Account");
+        DB.update(Idcondition , Column, NewValue, TableName);
         }
         catch(ClassNotFoundException ex) {
             Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);
