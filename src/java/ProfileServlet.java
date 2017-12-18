@@ -6,11 +6,16 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,10 +42,36 @@ public class ProfileServlet extends HttpServlet {
             String NewEmail = request.getParameter("mail");
             String NewPass = request.getParameter("pass");
             String NewPhone = request.getParameter("phone");
-            out.println(NewName);
-            out.println(NewEmail);
-            out.println(NewPass);
-            out.println(NewPhone);
+           
+            Account account = new Account() ;
+            HttpSession session = request.getSession(true);
+            session = (HttpSession)request.getServletContext().getAttribute("session");
+            account.setAccountID((String) session.getAttribute("Current user"));
+            String Column ="" , NewValue="" , tableName="account"; 
+            if (NewName.length()>0)
+            {
+                account.Update("username", NewName , tableName);
+            }
+            if (NewEmail.length()>0)
+            {
+                account.Update("e-mail", NewEmail , tableName);
+            }
+            if (NewPass.length()>0)
+            {
+                account.Update("password", NewPass , tableName);
+            }
+            if (NewPhone.length()>0)
+            {
+                account.Update("phone", NewPhone , tableName);
+            }
+            response.sendRedirect("JSP/Profile.jsp");
+            
+            
+//            out.println(account.getAccountID());
+//            out.println(NewName);
+//            out.println(NewEmail);
+//            out.println(NewPass);
+//            out.println(NewPhone);
         }
     }
 
