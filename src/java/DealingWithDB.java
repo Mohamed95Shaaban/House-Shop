@@ -57,11 +57,7 @@ public class DealingWithDB {
     public static void writeResultSet(ResultSet resultSet) throws SQLException 
     {
         int numOfColumns = resultSet.getMetaData().getColumnCount() ;
-        /*for  (int i = 1; i<= numOfColumns; i++)
-        {
-            System.out.print(resultSet.getMetaData().getColumnName(i)+ "    ");
-        }
-        System.out.println("");*/
+      
         while (resultSet.next()) {
             for  (int i = 1; i<= numOfColumns; i++)
             {

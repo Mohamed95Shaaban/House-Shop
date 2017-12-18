@@ -9,6 +9,13 @@
         </title>
         <link rel="stylesheet" href="../CSS/style.css">
         <link rel="stylesheet" href="../CSS/homecss.css" type="text/css">
+        
+          <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHGtXeRZZ2-lUD8UIHHeHP36_ruTkhyaA&callback=initMap">
+    </script>
+         
+    <script type="text/javascript" src="../JS/map.js"> 
+        </script>
 
     </head>
 
@@ -42,7 +49,9 @@
                  <input type="number" name = "house_size" placeholder="Hoise Size meters " required>
                  <input type="number" name="house_price"  placeholder="Hoise price L.E" required>
                  <input type="text" name="house_type" placeholder="1 For villa / 0 For Studio" required>
-                 <input type="text" name="house_locattion" placeholder="House location" required>
+                 <div id="map"></div>
+                 <input type="hidden" name="lat" id="lat"  />
+                 <input type="hidden" name="lon" id="lon"   />
                  <input type="number" name="house_floor" placeholder="House floor" required>
                 <textarea placeholder="Description"  cols="10" rows="5" name="body" required></textarea>
                 <input type="text" name="house_state" placeholder="Finished/ half finished/etc" required>

@@ -8,17 +8,18 @@ import java.util.logging.Logger;
 
 
 public class Advertisment {
-    private String Description , HouseID , House_floor , House_location ,photo_text ,
+    private String Description , HouseID , House_floor , lat, lon ,photo_text ,
                    House_price , House_size , Status , Suspended , Type , AccountId_fk , advertisment_Type;
 
     public Advertisment() {
     }
 
-    public Advertisment(String Description, String HouseID, String House_floor, String House_location, String House_price, String House_size, String Status, String Suspended, String Type, String AccountId ,String advertisment_Type , String photo_text) {
+    public Advertisment(String Description, String HouseID, String House_floor, String lat,String lon, String House_price, String House_size, String Status, String Suspended, String Type, String AccountId ,String advertisment_Type , String photo_text) {
         this.Description = Description;
         this.HouseID = HouseID;
         this.House_floor = House_floor;
-        this.House_location = House_location;
+        this.lat = lat;
+        this.lon = lon;
         this.House_price = House_price;
         this.House_size = House_size;
         this.Status = Status;
@@ -69,13 +70,23 @@ public class Advertisment {
         this.House_floor = House_floor;
     }
 
-    public String getHouse_location() {
-        return House_location;
+    public String getLat() {
+        return lat;
     }
 
-    public void setHouse_location(String House_location) {
-        this.House_location = House_location;
+    public void setLat(String lat) {
+        this.lat = lat;
     }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+   
 
     public String getHouse_price() {
         return House_price;
@@ -131,7 +142,7 @@ public class Advertisment {
         try{
         DealingWithDB DB =new DealingWithDB() ;
         DB.Connect();
-        String Columns = "`HouseID` , `description` , `house_floor` , `house_location` , `house_price` ,"
+        String Columns = "`HouseID` , `description` , `house_floor` , `lat, lon` , `house_price` ,"
                        + " `house_size` , `status` , `suspended` , `type` , `AccountId_fk` , `advertisment_Type` , `photo_text`" ;
         ResultSet res = DB.select(" MAX(HouseID) ", "advertisment", "1") ;
         res.next() ; 
@@ -139,7 +150,7 @@ public class Advertisment {
         int NewId = LastId+1 ;
         HouseID= String.valueOf(NewId) ;
         String Values = "'"+HouseID+"' , '"+Description+"' , '"+House_floor+"' , '"
-                +House_location+"' , '"+House_price+"' , '"+House_size+"' , '"
+                +lat+"' , '"+lon+"' , '"+House_price+"' , '"+House_size+"' , '"
                 +Status+"' , '"+Suspended+"' , '"+Type+"' , '"+AccountId_fk+"' , '" + advertisment_Type+"' , '"+photo_text+"'" ;  
         String TableName = "advertisment" ;
         DB.insert(Columns, Values, TableName);
@@ -239,7 +250,8 @@ public class Advertisment {
                 Advertisment temp = new Advertisment();
                 temp.setHouseID(res.getString("HouseID"));
                 temp.setHouse_floor(res.getString("house_floor"));
-                temp.setHouse_location(res.getString("house_location"));
+                temp.setLat(res.getString("lat"));
+                temp.setLon(res.getString("lon"));
                 temp.setHouse_price(res.getString("house_price"));
                 temp.setHouse_size(res.getString("house_size"));
                 temp.setDescription(res.getString("description"));
