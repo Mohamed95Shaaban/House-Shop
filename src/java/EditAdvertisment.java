@@ -33,15 +33,52 @@ public class EditAdvertisment extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EditAdvertisment</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EditAdvertisment at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String HFloor = request.getParameter("house_floor");
+            String HLocation = request.getParameter("house_location");
+            String HPrice = request.getParameter("house_price");
+            String HSize = request.getParameter("house_size");
+            String HStatus = request.getParameter("Status");
+            String HType = request.getParameter("type");
+            String adtype = request.getParameter("adtype");
+            String adID = request.getParameter("AdID");
+             
+            Advertisment adv = new Advertisment();
+            adv.setHouseID(adID);
+            
+            if (HFloor.length()>0)
+            {
+                adv.updateAdvertisment("house_floor", HFloor);
+            }
+            if (HLocation.length()>0)
+            {
+                adv.updateAdvertisment("house_location", HLocation);
+            }
+            if (HPrice.length()>0)
+            {
+                adv.updateAdvertisment("house_price", HPrice);
+            }
+            if (HSize.length()>0)
+            {
+                adv.updateAdvertisment("house_size", HSize);
+            }
+            if (HStatus.length()>0)
+            {
+                adv.updateAdvertisment("Status", HStatus);
+            }
+            if (HType.length()>0)
+            {
+                adv.updateAdvertisment("type", HType);
+            }
+            if (adtype.length()>0)
+            {
+                adv.updateAdvertisment("advertisment_Type", adtype);
+            }
+            response.sendRedirect("JSP/single.jsp?postID="+adID);
+            //out.println(HLocation);
+            //out.println(adID);
+//            out.println(NewPass);
+//            out.println(NewPhone);
+
         }
     }
 

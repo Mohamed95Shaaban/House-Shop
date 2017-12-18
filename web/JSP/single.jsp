@@ -5,7 +5,7 @@
 <%@page import="java.sql.Connection"%>
 <%
     Class.forName("com.mysql.jdbc.Driver");
-    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3304/house_buy_and_rent", "root", "");
     String ID = (String) session.getAttribute("Current user");
 
     String postID = request.getParameter("postID");
@@ -17,6 +17,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="../CSS/single.css" type="text/css">
+        <script type="text/javascript" src="../JS/JSSingle.js"></script>
+        <script type="text/javascript" src="../JS/jquery-3.1.0.min.js" ></script>
     </head>
     <body>
         <div class="header">  
@@ -42,7 +44,7 @@
                 // Displaying post Content
                 
                 Statement Stmt = Con.createStatement();
-                ResultSet adv = Stmt.executeQuery("SELECT HouseID,AccountId_fk,photo_text,description,house_floor,house_location,house_price,house_size,Status,type FROM advertisment WHERE HouseID=" + postID + "");
+                ResultSet adv = Stmt.executeQuery("SELECT * FROM advertisment WHERE HouseID=" + postID + "");
                 int commentCnt = 0;
                 while (adv.next()) {
                     String userFk = adv.getString("AccountId_fk");
@@ -65,17 +67,23 @@
                     out.print("</div>");
                     out.print("<div class=\"post-content\">");
                     out.print("<p>" + adv.getString("description") + "</p>");
-                    out.print("<form class=\"form\" action=\"../EditAdvertisment\">");
-                    out.print("<h5>House Floor: " +"<input type='number' name='house_floor' placeholder=\""+adv.getString("house_floor")+"\" disabled / >"+ "</h5>");
-                    out.print("<h5>House Location: "+"<input type='text' name='house_location' placeholder=\""+ adv.getString("house_location")+"\" disabled / >"  + "</h5>");
-                    out.print("<h5>House Price: " +"<input type='number' name='house_price' placeholder=\""+ adv.getString("house_price") +"\" disabled / >"+ "</h5>");
-                    out.print("<h5>House Size: " +"<input type='number' name='house_size' placeholder=\""+ adv.getString("house_size") +"\" disabled / >" + "</h5>");
-                    out.print("<h5>House Status: " +"<input type='text' name='Status' placeholder=\""+ adv.getString("Status")+"\" disabled / >"  + "</h5>");
-                    out.print("<h5>House Type: " +"<input type='text' name='type' placeholder=\""+ adv.getString("type")+"\" disabled / >"  + "</h5>");
+                    out.print("<form id=\"form_id\" class=\"form\" action=\"../EditAdvertisment\">");
+                    out.print("<h5>House Floor: " +"<input type='number' name='house_floor' id='floorID' placeholder=\""+adv.getString("house_floor")+"\" disabled / >"+ "</h5>");
+                    out.print("<h5>House Location: "+"<input type='text' name='house_location' id='locationID' placeholder=\""+ adv.getString("house_location")+"\" disabled / >"  + "</h5>");
+                    out.print("<h5>House Price: " +"<input type='number' name='house_price' id='priceID' placeholder=\""+ adv.getString("house_price") +"\" disabled / >"+ "</h5>");
+                    out.print("<h5>House Size: " +"<input type='number' name='house_size' id='sizeID' placeholder=\""+ adv.getString("house_size") +"\" disabled / >" + "</h5>");
+                    out.print("<h5>House Status: " +"<input type='text' name='Status' id='statusID' placeholder=\""+ adv.getString("Status")+"\" disabled / >"  + "</h5>");
+                    out.print("<h5>House Type: " +"<input type='text' name='type' id='typeID' placeholder=\""+ adv.getString("type")+"\" disabled / >"  + "</h5>");
+                    out.print("<h5>Advertisment Type: " +"<input type='text' name='adtype' id='adtypeID' placeholder=\""+ adv.getString("advertisment_Type")+"\" disabled / >"  + "</h5>");
+                    out.print("<input type='text' name='AdID' value=\""+ postID+"\" hidden / >");
                     out.print("<a href='AdvertiserData.jsp?postID=\""+postID+"\"'>AdvertiserData</a>");
                     out.print("<div class=\"post-img\"><img src=\"../scr/post_img.PNG\" alt=\"notFound\"></div>");
                     if(userFk.equals(ID))
-                        out.print("<button>Post</button>");
+                    {
+                        out.print("<button type=\"button\" id=\"EditID\" onclick=\"EditFunction()\">Edit</button>");
+                        out.print("<button type=\"button\" id=\"ChangeId\" onclick=\"ChangeFunction()\" style=\"display:none;\">change</button>");
+                    }
+                        
                     out.print("</form>");
                     out.print("</div>");
                     out.print("</div>");
