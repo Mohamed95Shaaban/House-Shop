@@ -65,14 +65,17 @@
                     out.print("</div>");
                     out.print("<div class=\"post-content\">");
                     out.print("<p>" + adv.getString("description") + "</p>");
-                    out.print("<form action ' '>");
-                    out.print("<h5>House Floor: " + adv.getString("house_floor") + "</h5>");
-                    out.print("<h5>House Location: " + adv.getString("house_location") + "</h5>");
-                    out.print("<h5>House Price: " + adv.getString("house_price") + "</h5>");
-                    out.print("<h5>House Size: " + adv.getString("house_size") + "</h5>");
-                    out.print("<h5>House Status: " + adv.getString("Status") + "</h5>");
-                    out.print("<h5>House Type: " + adv.getString("type") + "</h5>");
+                    out.print("<form class=\"form\" action=\"../EditAdvertisment\">");
+                    out.print("<h5>House Floor: " +"<input type='number' name='house_floor' placeholder=\""+adv.getString("house_floor")+"\" disabled / >"+ "</h5>");
+                    out.print("<h5>House Location: "+"<input type='text' name='house_location' placeholder=\""+ adv.getString("house_location")+"\" disabled / >"  + "</h5>");
+                    out.print("<h5>House Price: " +"<input type='number' name='house_price' placeholder=\""+ adv.getString("house_price") +"\" disabled / >"+ "</h5>");
+                    out.print("<h5>House Size: " +"<input type='number' name='house_size' placeholder=\""+ adv.getString("house_size") +"\" disabled / >" + "</h5>");
+                    out.print("<h5>House Status: " +"<input type='text' name='Status' placeholder=\""+ adv.getString("Status")+"\" disabled / >"  + "</h5>");
+                    out.print("<h5>House Type: " +"<input type='text' name='type' placeholder=\""+ adv.getString("type")+"\" disabled / >"  + "</h5>");
                     out.print("<div class=\"post-img\"><img src=\"../scr/post_img.PNG\" alt=\"notFound\"></div>");
+                    if(userFk.equals(ID))
+                        out.print("<button>Post</button>");
+                    out.print("</form>");
                     out.print("</div>");
                     out.print("</div>");
                     out.print("<div class=\"next-comment\">");

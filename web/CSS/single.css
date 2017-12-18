@@ -161,6 +161,13 @@ ul li a{
     display: inline-block;
 
 }
+.post-content form input
+{
+    font-size: 16px;
+    color: #8e8e8e;
+    background-color: white;
+    border: none;
+}
 .post-content h1{
     font-size: 30px;
 }
