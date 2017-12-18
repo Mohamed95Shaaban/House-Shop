@@ -46,7 +46,9 @@ public class CommentServlet extends HttpServlet {
              commentTable.setAdvertisment_id_FK(postID);
              commentTable.setComment_id(UserID);
              commentTable.AddComment();
-             response.sendRedirect("JSP/single.jsp?postID="+postID+"");
+             out.print(comment);
+             out.print(UserID);
+             //response.sendRedirect("JSP/single.jsp?postID="+postID+"");
             
         }
     }

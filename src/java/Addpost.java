@@ -5,6 +5,7 @@
  */
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 
 /**
@@ -68,9 +70,15 @@ public class Addpost extends HttpServlet {
               session = (HttpSession) request.getServletContext().getAttribute("session") ;
               String userid = (String) session.getAttribute("Current user");
               advertisment.setAccountId_fk(userid);  
+              out.println("hhhhhh => "+advertisment.getAccountId_fk());
               advertisment.AddAdvertisment();
-              
-              response.sendRedirect("JSP/Home.jsp");
+              Part part = request.getPart("houseImg");
+              InputStream is = part.getInputStream();
+              out.print(is.toString());
+              out.print(part.getSubmittedFileName());
+
+
+//              response.sendRedirect("JSP/Home.jsp");
               
               //Profile
         }
