@@ -11,17 +11,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  *
  * @author Antr
  */
 @WebServlet(urlPatterns = {"/Addpost"})
+@MultipartConfig(maxFileSize = 16177216)
 public class Addpost extends HttpServlet {
 
     /**
@@ -38,35 +41,33 @@ public class Addpost extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-              String houseSize = request.getParameter("house_size");
-              String housePrice = request.getParameter("house_prise");
-              String houseType =  request.getParameter("house_type");
-              String houseLocattion = request.getParameter("house_locattion");
-              String houseFloor = request.getParameter("house_floor");
-              String description = request.getParameter("body");
-              String houseState = request.getParameter("house_state");
-              String advertismentType = request.getParameter("advertisment_type");
-              /*********************************************************/
-              Advertisment advertisment = new Advertisment();
-              advertisment.setHouse_size(houseSize);
-              advertisment.setHouse_price(housePrice);
-              advertisment.setDescription(description);
-              advertisment.setType(houseType);
-              advertisment.setHouse_location(houseLocattion);
-              advertisment.setHouse_floor(houseFloor);
-              advertisment.setStatus(houseState);
-              advertisment.setPhoto_text(" ");
-              advertisment.setAdvertisment_Type(advertismentType);
-              advertisment.setSuspended("0");
+              String HouseSize = request.getParameter("house_size");
+              String HousePrice = request.getParameter("house_price");
+              String HouseType = request.getParameter("house_type");
+              String HouseLocation = request.getParameter("house_locattion");
+              String HouseFloor= request.getParameter("house_floor");
+              String Describtion = request.getParameter("body");
+              String HouseStates = request.getParameter("house_state");
+              String AdvertismentType = request.getParameter("advertisment_type");
               
               /*************************************************************/
+              Advertisment advertisment = new Advertisment();
+              advertisment.setHouse_size(HouseSize);
+              advertisment.setHouse_price(HousePrice);
+              advertisment.setType(HouseType);
+              advertisment.setHouse_location(HouseLocation);
+              advertisment.setHouse_floor(HouseFloor);
+              advertisment.setDescription(Describtion);
+              advertisment.setStatus(HouseStates);
+              advertisment.setAdvertisment_Type(AdvertismentType);
+              advertisment.setSuspended(HouseType);
+              advertisment.setSuspended("0");
+              advertisment.setPhoto_text("");
              
               HttpSession  session = request.getSession(true);
               session = (HttpSession) request.getServletContext().getAttribute("session") ;
               String userid = (String) session.getAttribute("Current user");
               advertisment.setAccountId_fk(userid);  
-              out.println("hhhhhh => "+advertisment.getAccountId_fk());
-              log("555555555555555"+userid);
               advertisment.AddAdvertisment();
               
               response.sendRedirect("JSP/Home.jsp");

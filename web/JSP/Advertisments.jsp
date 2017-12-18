@@ -7,6 +7,7 @@
 <%
     Class.forName("com.mysql.jdbc.Driver");
     Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
+     String ID = (String) session.getAttribute("Current user");
     
 %>
 
@@ -41,7 +42,7 @@
             <div class="line"></div>
            <%
                 Statement Stmt = Con.createStatement();
-                ResultSet adv = Stmt.executeQuery("SELECT HouseID,photo_text,description FROM advertisment ");
+                ResultSet adv = Stmt.executeQuery("SELECT HouseID,photo_text,description FROM advertisment WHERE AccountId_fk ="+ID+ "");
                 while(adv.next())
                 {
                     String id= adv.getString("HouseID");

@@ -5,7 +5,7 @@
 <%@page import="java.sql.Connection"%>
 <%
     Class.forName("com.mysql.jdbc.Driver");
-    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3304/house_buy_and_rent", "root", "");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
     String ID = (String) session.getAttribute("Current user");
 
     String postID = request.getParameter("postID");
@@ -30,7 +30,7 @@
                 </ul>
                 <div id="logo"><img id="iLogo" src="../scr/LOGO2.png"/></div>
                 <ul id="nav-bar-list-right">
-                    <li class="dropdown"><a class="dropdwon-link">Category</a>
+                    <li class="dropdown"><a class="dropdwon-link"><a href="Advertisments.jsp">Advertisments</a>
 
 
                     </li>
@@ -40,11 +40,12 @@
 
             <%
                 // Displaying post Content
-                out.print(postID);
+                
                 Statement Stmt = Con.createStatement();
-                ResultSet adv = Stmt.executeQuery("SELECT HouseID,photo_text,description,house_floor,house_location,house_price,house_size,Status,type FROM advertisment WHERE HouseID=" + postID + "");
+                ResultSet adv = Stmt.executeQuery("SELECT HouseID,AccountId_fk,photo_text,description,house_floor,house_location,house_price,house_size,Status,type FROM advertisment WHERE HouseID=" + postID + "");
                 int commentCnt = 0;
                 while (adv.next()) {
+                    String userFk = adv.getString("AccountId_fk");
                     Statement stmt3 = Con.createStatement();
                     ResultSet rates = stmt3.executeQuery("SELECT * FROM rate WHERE Advertisment_Id_Fk=" + postID + "");
                     rates.last();
@@ -64,6 +65,7 @@
                     out.print("</div>");
                     out.print("<div class=\"post-content\">");
                     out.print("<p>" + adv.getString("description") + "</p>");
+                    out.print("<form action ' '>");
                     out.print("<h5>House Floor: " + adv.getString("house_floor") + "</h5>");
                     out.print("<h5>House Location: " + adv.getString("house_location") + "</h5>");
                     out.print("<h5>House Price: " + adv.getString("house_price") + "</h5>");

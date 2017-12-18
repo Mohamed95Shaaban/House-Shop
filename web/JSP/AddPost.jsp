@@ -25,12 +25,8 @@
                     </ul>
                     <div id="logo"><img id="iLogo" src="../scr/LOGO2.png"/></div>
                     <ul id="nav-bar-list-right">
-                        <li class="dropdown"><a class="dropdwon-link">Category</a><div class="dropdown-content">
-                                <a href="#">Diary</a>
-                                <a href="#">Personal</a>
-                                <a href="#">Holiday</a>
-                                <a href="#">Work</a>
-                                <a href="#">Family</a>
+                        <li class="dropdown"><a class="dropdwon-link">Advertisments</a><div class="dropdown-content">
+                                
                             </div>   
                         </li>
                         <li class="hover"><a href="AddPost.html">Add Post</a></li>
@@ -41,10 +37,10 @@
                 <div class="line"></div>
             
             <div id="form">
-                <form action="../Addpost" method="post"  enctype="multipart/form-data">
+                <form action="../Addpost" method="post" enctype="multipart/form-data"  >
                
                  <input type="number" name = "house_size" placeholder="Hoise Size meters " required>
-                 <input type="number" name="house_prise"  placeholder="Hoise price L.E" required>
+                 <input type="number" name="house_price"  placeholder="Hoise price L.E" required>
                  <input type="text" name="house_type" placeholder="1 For villa / 0 For Studio" required>
                  <input type="text" name="house_locattion" placeholder="House location" required>
                  <input type="number" name="house_floor" placeholder="House floor" required>
