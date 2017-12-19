@@ -155,10 +155,19 @@ public class Advertisment {
         String Columns = "`HouseID` , `description` , `house_floor` , `lat` , `lon` , `house_price` ,"
                        + " `house_size` , `removed` , `status` , `suspended` , `type` , `AccountId_fk` , `advertisment_Type` , `photo_text`" ;
         ResultSet res = DB.select(" MAX(HouseID) ", "advertisment", "1") ;
-        res.next() ; 
-        int LastId = Integer.valueOf(res.getString(1)) ;
-        int NewId = LastId+1 ;
-        HouseID= String.valueOf(NewId) ;
+        res.next() ;
+        String max = String.valueOf(res.getString(1)) ;
+        if (!max.equals("null"))
+        {
+            int LastId = Integer.valueOf(max) ;
+            int NewId = LastId+1 ;
+            HouseID= String.valueOf(NewId) ;
+        }
+        else
+        {
+            HouseID="1" ;
+        }
+        
         String Values = "'"+HouseID+"' , '"+Description+"' , '"+House_floor+"' , '"
                 +lat+"' , '"+lon+"' , '"+House_price+"' , '"+House_size+"' , '"+removed+"' , '"
                 +Status+"' , '"+Suspended+"' , '"+Type+"' , '"+AccountId_fk+"' , '" + advertisment_Type+"' , '"+photo_text+"'" ;  

@@ -74,7 +74,7 @@
 </form>
 
 <%               Statement Stmt = Con.createStatement();
-    ResultSet adv = Stmt.executeQuery("SELECT * FROM advertisment ");
+    ResultSet adv = Stmt.executeQuery("SELECT * FROM advertisment where removed =0");
     while (adv.next()) {
         String id = adv.getString("HouseID");
         String Suspended = adv.getString("suspended");

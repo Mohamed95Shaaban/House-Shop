@@ -7,7 +7,7 @@
     // hna code el connection 
     Class.forName("com.mysql.jdbc.Driver");
     Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3304/house_buy_and_rent", "root", "");
-
+    String CurrentUserID = (String) session.getAttribute("Current user");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -46,7 +46,7 @@
 
             <%               
                 Statement Stmt = Con.createStatement();
-                ResultSet RS = Stmt.executeQuery("SELECT Description,adviertisment_id_fk FROM notification");
+                ResultSet RS = Stmt.executeQuery("SELECT Description,adviertisment_id_fk FROM notification where recieverID = "+CurrentUserID);
                 while (RS.next()) {
                    
                     out.print(" <div id='notify'> ");

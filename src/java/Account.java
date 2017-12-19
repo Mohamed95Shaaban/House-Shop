@@ -93,10 +93,19 @@ public class Account {
         DealingWithDB DB = new DealingWithDB() ;
         DB.Connect();
         ResultSet res = DB.select("MAX(AccountID)", "Account", "1") ;
-        res.next() ; 
-        int LastId = Integer.valueOf(res.getString(1)) ;
-        int NewId = LastId+1 ;
-        AccountID = String.valueOf(NewId) ;
+        res.next() ;
+        String max = String.valueOf(res.getString(1)) ;
+        if (!max.equals("null"))
+        {
+            int LastId = Integer.valueOf(max) ;
+            int NewId = LastId+1 ;
+            AccountID= String.valueOf(NewId) ;
+        }
+        else
+        {
+            AccountID="1" ;
+        }
+        
         
         String Columns = "`username` , `password` , `e-mail` , `phone` , `type` , `picture_text` , `AccountId`" ;
         String Values = "'"+User_Name+"' , '"+Pass+"' , '"+E_Mail

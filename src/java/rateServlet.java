@@ -6,6 +6,10 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,11 +44,24 @@ public class rateServlet extends HttpServlet {
            userRate.setRate_value(ratevalue);
            userRate.AddRate();
            
+           String recieverID="" ;
+           DealingWithDB DB = new DealingWithDB(); 
+            try {
+                DB.Connect();
+                ResultSet res =DB.select("AccountId_fk", "advertisment" , "HouseID = "+postID );
+                res.next() ;
+                recieverID=res.getString("AccountId_fk") ;
+            } catch (SQLException ex) {
+                Logger.getLogger(rateServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(rateServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
            Notification userNotify= new Notification();
            userNotify.setAdvertisment_id_fk(postID);
            userNotify.setDescription("Someone Rated your post");
            userNotify.setSenderID(userID);
-           userNotify.setRecieverID("4");
+           userNotify.setRecieverID(recieverID);
            userNotify.AddNotification();
            response.sendRedirect("JSP/single.jsp?postID="+postID+"");
         }
