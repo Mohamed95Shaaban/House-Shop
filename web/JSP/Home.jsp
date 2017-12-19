@@ -31,7 +31,22 @@
                 </ul>
                 <div id="logo"><img id="iLogo" src="../scr/LOGO2.png"/></div>
                 <ul id="nav-bar-list-right">
-                    <li class="dropdown"><a class="dropdwon-link"><a href="Advertisments.jsp">Advertisments</a><div class="dropdown-content">
+                    <% 
+                        Statement Stmt2 = Con.createStatement();
+                      ResultSet res = Stmt2.executeQuery("SELECT * FROM account WHERE AccountId="+CurrentUserID+"");
+                      while(res.next()){
+                      String userType=res.getString("type");
+                        if(userType.equals("1")){
+                          out.print("<li class='dropdown'><a class='dropdwon-link'><a href='Admin.jsp'>ADMIN</a><div class='dropdown-content'>");
+                        }
+                        else{
+                            out.print("<li class='dropdown'><a class='dropdwon-link'><a href='Advertisments.jsp'>Advertisments</a><div class='dropdown-content'>");
+                        }
+                      }
+                    
+                    
+                    %>
+                    
                         
                          </div>   
                     </li>
@@ -39,6 +54,21 @@
                 </ul>
             </div>
             <div class="title"><p>Hello, Welcome to House Shop!</p></div>
+            <Form action="SpaceficSearch.jsp">
+                Choose Specific property  
+                <select name="property">
+                     <option   value="house_price">Price</option>
+                     <option   value="house_size">Size</option>
+                     <option  value="type">House Type</option>
+                     <option  valur="Status"> State </option>
+                     <option  value="advertisment_Type">ADType</option> 
+                </select>
+                <br/>
+                <input type="text" name="searchQury"/>
+                
+                <input type="submit" value="search"/>
+            
+            </form>
             <div class="line"></div>
             <div class="line"></div>
            <%

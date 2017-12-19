@@ -10,7 +10,7 @@
 
     String postID = request.getParameter("postID");
 
-    out.print(ID);
+   
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
