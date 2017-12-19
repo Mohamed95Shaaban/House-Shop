@@ -8,13 +8,13 @@ import java.util.logging.Logger;
 
 
 public class Advertisment {
-    private String Description , HouseID , House_floor , lat, lon ,photo_text ,
+    private String Description , HouseID , House_floor , lat, lon ,photo_text , removed="0",
                    House_price , House_size , Status , Suspended , Type , AccountId_fk , advertisment_Type;
 
     public Advertisment() {
     }
 
-    public Advertisment(String Description, String HouseID, String House_floor, String lat,String lon, String House_price, String House_size, String Status, String Suspended, String Type, String AccountId ,String advertisment_Type , String photo_text) {
+    public Advertisment(String Description, String HouseID, String House_floor, String lat,String lon, String House_price, String House_size, String Status, String Suspended, String Type, String AccountId ,String advertisment_Type , String photo_text , String removed) {
         this.Description = Description;
         this.HouseID = HouseID;
         this.House_floor = House_floor;
@@ -28,6 +28,15 @@ public class Advertisment {
         this.AccountId_fk = AccountId;
         this.advertisment_Type = advertisment_Type;
         this.photo_text = photo_text ;
+        this.removed = removed ;
+    }
+
+    public void setRemoved(String removed) {
+        this.removed = removed;
+    }
+
+    public String getRemoved() {
+        return removed;
     }
 
     public String getAdvertisment_Type() {
@@ -143,14 +152,14 @@ public class Advertisment {
         DealingWithDB DB =new DealingWithDB() ;
         DB.Connect();
         String Columns = "`HouseID` , `description` , `house_floor` , `lat, lon` , `house_price` ,"
-                       + " `house_size` , `status` , `suspended` , `type` , `AccountId_fk` , `advertisment_Type` , `photo_text`" ;
+                       + " `house_size` , `removed` , `status` , `suspended` , `type` , `AccountId_fk` , `advertisment_Type` , `photo_text`" ;
         ResultSet res = DB.select(" MAX(HouseID) ", "advertisment", "1") ;
         res.next() ; 
         int LastId = Integer.valueOf(res.getString(1)) ;
         int NewId = LastId+1 ;
         HouseID= String.valueOf(NewId) ;
         String Values = "'"+HouseID+"' , '"+Description+"' , '"+House_floor+"' , '"
-                +lat+"' , '"+lon+"' , '"+House_price+"' , '"+House_size+"' , '"
+                +lat+"' , '"+lon+"' , '"+House_price+"' , '"+House_size+"' , '"+removed+"' , '"
                 +Status+"' , '"+Suspended+"' , '"+Type+"' , '"+AccountId_fk+"' , '" + advertisment_Type+"' , '"+photo_text+"'" ;  
         String TableName = "advertisment" ;
         DB.insert(Columns, Values, TableName);

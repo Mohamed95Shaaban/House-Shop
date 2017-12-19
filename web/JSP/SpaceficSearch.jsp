@@ -9,7 +9,7 @@
 <%@page import="java.sql.DriverManager"%>
 <%
     Class.forName("com.mysql.jdbc.Driver");
-    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3304/house_buy_and_rent", "root", "");
  
 %>
 
@@ -27,7 +27,7 @@
         <div id="Container">
             <div id="nav-bar">
                 <ul id="nav-bar-list-left">
-                    <li class="hover"><a href="">Home</a></li>
+                    <li class="hover"><a href="Home.jsp">Home</a></li>
                     <li class="hover"><a href="Profile.jsp">Profile</a></li>
                 </ul>
                 <div id="logo"><img id="iLogo" src="../scr/LOGO2.png"/></div>
@@ -37,6 +37,7 @@
                          </div>   
                     </li>
                     <li class="hover"><a href="AddPost.jsp">Add Post</a></li>
+                    <li class="hover"><a href="index.jsp">Log Out</a></li>
                 </ul>
             </div>
             <% 

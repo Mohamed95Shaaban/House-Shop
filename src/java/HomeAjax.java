@@ -35,6 +35,13 @@ public class HomeAjax extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String HouseID = request.getParameter("HouseID") ;
             String Suspended = request.getParameter("Suspended") ;
+            String Remove = request.getParameter("remove") ;
+            if (Remove.equals("1"))//remove 
+            {
+                Advertisment ad = new Advertisment();
+                ad.setHouseID(HouseID);
+                ad.updateAdvertisment("removed", "1");
+            }
             if (Suspended.equals("1"))//will unsuspend
             {
                 Advertisment ad = new Advertisment();
@@ -47,7 +54,9 @@ public class HomeAjax extends HttpServlet {
                 ad.setHouseID(HouseID);
                 ad.updateAdvertisment("suspended", "1");
             }
+            
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

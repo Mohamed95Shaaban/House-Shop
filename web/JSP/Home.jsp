@@ -51,6 +51,7 @@
                          </div>   
                     </li>
                     <li class="hover"><a href="AddPost.jsp">Add Post</a></li>
+                    <li class="hover"><a href="index.jsp">Log Out</a></li>
                 </ul>
             </div>
             <div class="title"><p>Hello, Welcome to House Shop!</p></div>
@@ -73,7 +74,7 @@
             <div class="line"></div>
            <%
                 Statement Stmt = Con.createStatement();
-                ResultSet adv = Stmt.executeQuery("SELECT HouseID,photo_text,description,suspended FROM advertisment ");
+                ResultSet adv = Stmt.executeQuery("SELECT HouseID,photo_text,description,suspended FROM advertisment where removed=0 ");
                 while(adv.next())
                 {
                     String id= adv.getString("HouseID");
@@ -87,7 +88,7 @@
                     comments.next();
                     int commentCnt= 1;
                     
-                    out.print("<div class=\"post\">");
+                    out.print("<div id=\"PID"+id+"\" class=\"post\">");
                     out.print("<div class=\"date\"><img src=\"../scr/"+adv.getString("photo_text")+"\" alt=\"notFound\"></div>");
                     out.print(" <div class=\"post-info\">");
                     out.print("<ul class=\"post-interactions\">");
@@ -103,10 +104,9 @@
                     out.print("<div id=\"hrefID"+id+"\" class=\"button\"><a  href=\"single.jsp?postID="+id+"\" >Read More </a></div>");
                     
                     out.print("<div class=\"button\">"
-                            + "<input type=\"button\" id=\"susID"+id+"\" value=\"Suspend\" onclick=\"Suspend("+id+")\" hidden/>"  
-                            + "</div>");
-                    out.print("<div class=\"button\">"
-                            + "<input type=\"button\" id=\"unsusID"+id+"\" value=\"UnSuspend\" onclick=\"UnSuspend("+id+")\" hidden/>"  
+                            + "<input type=\"button\" id=\"susID"+id+"\" value=\"Suspend\" onclick=\"Suspend("+id+")\" hidden/>   "  
+                            + "<input type=\"button\" id=\"unsusID"+id+"\" value=\"UnSuspend\" onclick=\"UnSuspend("+id+")\" hidden/>   "  
+                            + "<input type=\"button\" id=\"remID"+id+"\" value=\"remove\" onclick=\"remove("+id+")\" hidden/>   "  
                             + "</div>");
                     out.print("<p id=\"paragraphID"+id+"\" hidden>Sorry , It is Suspended </p>"  ) ;
                     
@@ -121,7 +121,7 @@
                     }
                     if (CurrentUserID.equals("1"))//Admin
                     {
-                        out.print("<script type=\"text/javascript\">showSusButtons("+id+")</script>");
+                        out.print("<script type=\"text/javascript\">showButtons("+id+")</script>");
                     }
                     
                     out.print("</div>"); 

@@ -37,6 +37,7 @@
 
                     </li>
                     <li class="hover"><a href="AddPost.jsp">Add Post</a></li>
+                    <li class="hover"><a href="index.jsp">Log Out</a></li>
                 </ul>
             </div>
 

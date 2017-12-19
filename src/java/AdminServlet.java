@@ -11,14 +11,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author kawrshy
+ * @author Ahmed
  */
-@WebServlet(urlPatterns = {"/CommentServlet"})
-public class CommentServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/AdminServlet"})
+public class AdminServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,24 +32,13 @@ public class CommentServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-             HttpSession UserSession = request.getSession(true);
-             UserSession = (HttpSession)request.getServletContext().getAttribute("session");
-             String UserID = (String) UserSession.getAttribute("Current user");
-             String comment = request.getParameter("comment");
-             String postID = request.getParameter("postid");
-             
-             Comment commentTable= new Comment();
-             
-             commentTable.setCommentText(comment);
-             commentTable.setAdvertisment_id_FK(postID);
-             commentTable.setCommenter_FK(UserID);
-             
-             commentTable.AddComment();
-             out.print(comment);
-             out.print(UserID);
-             response.sendRedirect("JSP/single.jsp?postID="+postID+"");
-            
+            /* TODO output your page here. You may use following sample code. */
+               String PID = request.getParameter("PID");
+               String AccountID = request.getParameter("AccountID") ;
+               Account account =new Account() ;
+               account.setAccountID(AccountID);
+               account.Update("password", PID, "account");
+               response.sendRedirect("JSP/Admin.jsp");
         }
     }
 
