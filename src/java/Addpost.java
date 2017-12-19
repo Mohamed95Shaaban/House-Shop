@@ -8,7 +8,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -20,146 +24,79 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-
 /**
  *
  * @author Antr
  */
 @WebServlet(urlPatterns = {"/Addpost"})
-  @MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
-                 maxFileSize=1024*1024*10,      // 10MB
-                 maxRequestSize=1024*1024*50)
+@MultipartConfig(maxFileSize = 16177215)
 public class Addpost extends HttpServlet {
 
-    private static final String SAVE_DIR = "images";
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-  
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, ClassNotFoundException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String houseSize = request.getParameter("house_size");
-            String housePrice = request.getParameter("house_price");
-            String houseType = request.getParameter("house_type");
-            String lat = request.getParameter("lat");
-            String lon= request.getParameter("lon");
-            String houseFloor = request.getParameter("house_floor");
-            String description = request.getParameter("body");
-            String houseState = request.getParameter("house_state");
-            String advertismentType = request.getParameter("advertisment_type");
-            /**
-             * ******************************************************
-             */
-            Advertisment advertisment = new Advertisment();
-            advertisment.setHouse_size(houseSize);
-            advertisment.setHouse_price(housePrice);
-            advertisment.setDescription(description);
-            advertisment.setType(houseType);
-            advertisment.setLat(lat);
-            advertisment.setLon(lon);
-            advertisment.setHouse_floor(houseFloor);
-            advertisment.setStatus(houseState);
-            advertisment.setPhoto_text("k");
-            advertisment.setAdvertisment_Type(advertismentType);
-            advertisment.setSuspended("0");
-
-            /**
-             * **********************************************************
-             */
-            HttpSession session = request.getSession(true);
-            session = (HttpSession) request.getServletContext().getAttribute("session");
-            String userid = (String) session.getAttribute("Current user");
-            advertisment.setAccountId_fk(userid);
-            out.println("hhhhhh => " + advertisment.getAccountId_fk());
-            advertisment.AddAdvertisment();
-            Part part = request.getPart("houseImg");
-            InputStream is = part.getInputStream();
-            String savePath = "C:" + File.separator + SAVE_DIR;
-            File fileSaveDir = new File(savePath);
-            if (!fileSaveDir.exists()) {
-
-                fileSaveDir.mkdir();
-
-            }
-            String photoName= extractFileName(part);
-            out.print(photoName);
-            out.print("lat: "+request.getParameter("lat"));
-             out.print("price: "+ housePrice);
-            part.write(savePath + File.separator + photoName);
-             
-//              response.sendRedirect("JSP/Home.jsp");
-            //Profile
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(Addpost.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Addpost.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        String houseSize = request.getParameter("house_size");
+        String housePrice = request.getParameter("house_price");
+        String houseType = request.getParameter("house_type");
+        String lat = request.getParameter("lat");
+        String lon = request.getParameter("lon");
+        String houseFloor = request.getParameter("house_floor");
+        String description = request.getParameter("body");
+        String houseState = request.getParameter("house_state");
+        String advertismentType = request.getParameter("advertisment_type");
+        /**
+         * ******************************************************
+         */
+//            Advertisment advertisment = new Advertisment();
+//            advertisment.setHouse_size(houseSize);
+//            advertisment.setHouse_price(housePrice);
+//            advertisment.setDescription(description);
+//            advertisment.setType(houseType);
+//            advertisment.setLat(lat);
+//            advertisment.setLon(lon);
+//            advertisment.setHouse_floor(houseFloor);
+//            advertisment.setStatus(houseState);
+//            advertisment.setPhoto_text("k");
+//            advertisment.setAdvertisment_Type(advertismentType);
+//            advertisment.setSuspended("0");
+
+        /**
+         * **********************************************************
+         */
+        HttpSession session = request.getSession(true);
+        session = (HttpSession) request.getServletContext().getAttribute("session");
+        String userid = (String) session.getAttribute("Current user");
+        //advertisment.setAccountId_fk(userid);
+        //   out.println("hhhhhh => " + advertisment.getAccountId_fk());
+        // advertisment.AddAdvertisment();
+        Part part = request.getPart("houseImg");
+
         try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(Addpost.class.getName()).log(Level.SEVERE, null, ex);
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
+            String houseID = "6";
+            Statement Stmt = Con.createStatement();
+
+            String UPLOAD_LOCATION = "E:/kolya/Sna 4/IA/project/House-Shop/web/scr";
+            Part filePart = request.getPart("houseImg");
+            String name = filePart.getSubmittedFileName();
+            Stmt.executeUpdate("INSERT INTO  advertisment VALUES('" + houseSize + "','" + housePrice + "','" + houseType + "','" + houseType + "','" + description + "','" + houseState + "','" + houseID + "','" + 0 + "','" + userid + "','" + advertismentType + "','" + lat + "','" + lon + "','" + name + "')");
+            Stmt.close();
+            Con.close();
+            InputStream fileContent = filePart.getInputStream();
+            File fileSaveDir = new File(UPLOAD_LOCATION,name);
+
+            Files.copy(filePart.getInputStream(), fileSaveDir.toPath());
+            response.sendRedirect("JSP/Home.jsp");
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Addpost.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Addpost.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-private String extractFileName(Part part) {
-    String contentDisp = part.getHeader("content-disposition");
-    String[] items = contentDisp.split(";");
-    for (String s : items) {
-        if (s.trim().startsWith("filename")) {
-            return s.substring(s.indexOf("=") + 2, s.length()-1);
-        }
-    }
-    return "";
-}
 }

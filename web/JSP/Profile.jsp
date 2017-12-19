@@ -62,7 +62,7 @@
             </ul>
         </div>
         <div id="info">
-            <form id="form_id"  action="../ProfileServlet" method="post" >
+            <form id="form_id"  action="../ProfileServlet" method="post"  enctype="multipart/form-data">
                 <div id="photo">
                     <input type="file" name="file" accept="image/gif, image/jpeg, image/png">  
                     <h3>Photo</h3>
@@ -72,6 +72,7 @@
                 <input type="text" name="mail" placeholder= <%= EMail %> id="e-mailID" disabled/>    
                 <input type="text" name="pass" placeholder= <%= pass %> id="passID" disabled/>
                 <input type="text" name="phone" placeholder= <%= phone %> id="phoneID" disabled/>
+                <img src="../scr/<%=pic_text%>" alt="notfound" /> <br> 
                 <button type="button" id="EditID" onclick="EditFunction()">Edit</button>  
                 <button type="button" id="ChangeId" onclick="ChangeFunction();" style="display:none;">change</button>
 

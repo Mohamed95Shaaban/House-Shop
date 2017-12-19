@@ -74,7 +74,7 @@
             <div class="line"></div>
            <%
                 Statement Stmt = Con.createStatement();
-                ResultSet adv = Stmt.executeQuery("SELECT HouseID,photo_text,description,suspended FROM advertisment where removed=0 ");
+                ResultSet adv = Stmt.executeQuery("SELECT * FROM advertisment ");
                 while(adv.next())
                 {
                     String id= adv.getString("HouseID");
