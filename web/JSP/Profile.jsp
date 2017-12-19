@@ -16,11 +16,12 @@
     ResultSet res = Stmt.executeQuery("SELECT * FROM account WHERE `AccountId` = '" + AccountID + "'");
         
     res.next();
+    String UName="";
     String EMail =res.getString("e-mail");
     String pass =res.getString("password");
     String phone = res.getString("phone");
     String pic_text = "picture_text";
-    String UName = res.getString("username");
+    UName += res.getString("username");
     String type = res.getString("type");
     
 

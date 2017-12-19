@@ -30,7 +30,7 @@
         <div id="Container">
             <div id="nav-bar">
                 <ul id="nav-bar-list-left">
-                    <li class="hover"><a href="">Home</a></li>
+                    <li class="hover"><a href="Home.jsp">Home</a></li>
                     <li class="hover"><a href="Profile.jsp">Profile</a></li>
                 </ul>
                 <div id="logo"><img id="iLogo" src="../scr/LOGO2.png"/></div>

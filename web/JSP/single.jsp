@@ -27,8 +27,8 @@
         <div id="Container">
             <div id="nav-bar">
                 <ul id="nav-bar-list-left">
-                    <li class="hover"><a href="">Home</a></li>
-                    <li class="hover"><a href="Profile.html">Profile</a></li>
+                    <li class="hover"><a href="Home.jsp">Home</a></li>
+                    <li class="hover"><a href="Profile.jsp">Profile</a></li>
                 </ul>
                 <div id="logo"><img id="iLogo" src="../scr/LOGO2.png"/></div>
                 <ul id="nav-bar-list-right">
@@ -36,7 +36,7 @@
 
 
                     </li>
-                    <li class="hover"><a href="">Contact</a></li>
+                    <li class="hover"><a href="AddPost.jsp">Add Post</a></li>
                 </ul>
             </div>
 
@@ -77,12 +77,17 @@
                     out.print("<h5>Advertisment Type: " +"<input type='text' name='adtype' id='adtypeID' placeholder=\""+ adv.getString("advertisment_Type")+"\" disabled / >"  + "</h5>");
                     out.print("<input type='text' name='AdID' value=\""+ postID+"\" hidden / >");
                     out.print("<a href='AdvertiserData.jsp?postID=\""+postID+"\"'>AdvertiserData</a>");
+                    
                     out.print("<div class=\"post-img\"><img src=\"../scr/post_img.PNG\" alt=\"notFound\"></div>");
                     if(userFk.equals(ID))
                     {
-                        out.print("<button type=\"button\" id=\"EditID\" onclick=\"EditFunction()\">Edit</button>");
-                        out.print("<button type=\"button\" id=\"ChangeId\" onclick=\"ChangeFunction()\" style=\"display:none;\">change</button>");
+                        out.print("<button type=\"button\" id=\"EditID\" onclick=\"EditFunction()\">  Edit  </button>");
+                        out.print("<button type=\"button\" id=\"ChangeId\" onclick=\"ChangeFunction()\" style=\"display:none;\">   change   </button>");
                     }
+//                    if(ID.equals("1"))
+//                    {
+//                        
+//                    }
                         
                     out.print("</form>");
                     out.print("</div>");

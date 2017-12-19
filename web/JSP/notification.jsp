@@ -29,20 +29,17 @@
         <div id="Container">
             <div id="nav-bar">
                 <ul id="nav-bar-list-left">
-                    <li class="hover"><a href="">Home</a></li>
-                    <li class="hover"><a href="Profile.html">Profile</a></li>
+                    <li class="hover"><a href="Home.jsp">Home</a></li>
+                    <li class="hover"><a href="Profile.jsp">Profile</a></li>
                 </ul>
                 <div id="logo"><img id="iLogo" src="../scr/LOGO2.png"/></div>
                 <ul id="nav-bar-list-right">
-                    <li class="dropdown"><a class="dropdwon-link">Category</a><div class="dropdown-content">
-                            <a href="#">Diary</a>
-                            <a href="#">Personal</a>
-                            <a href="#">Holiday</a>
-                            <a href="#">Work</a>
-                            <a href="#">Family</a>
+                    <li class="dropdown"><a href="Advertisments.jsp" class="dropdwon-link">Advertisments</a>
+                        <div class="dropdown-content">
+                            
                         </div>   
                     </li>
-                    <li class="hover"><a href="">Contact</a></li>
+                    <li class="hover"><a href="AddPost.jsp">Add Post</a></li>
                 </ul>
             </div>
 
