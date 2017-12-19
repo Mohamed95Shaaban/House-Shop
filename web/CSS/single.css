@@ -14,6 +14,41 @@
     margin:  0 auto;
     position: relative;
 }
+#AdvertiserData{
+    margin: 0 auto;
+    height: 45px;
+    width: 160px;
+    background-color: #3eb3a5;
+    border-radius: 10px;
+    color: white;
+    padding-top: 12px;  
+    text-align: center;
+    float: right;   
+    margin-right: 15px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    
+}
+.Aedit, .Achange{
+    
+    border: none;
+    height: 45px;
+    width: 160px;
+    background-color: #3eb3a5;
+    border-radius: 10px;
+    color: white;
+    padding-top: 12px;  
+    text-align: center;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
 .header{
     margin:  0 auto;
     height: 350px;
@@ -292,6 +327,25 @@ ul li a{
     text-align: center;
     float: right;
 
+}
+#rateform{
+    margin: 0 auto;
+    height: 45px;
+    width: 300px;
+    border-radius: 10px;
+    padding-top: 12px;  
+    text-align: center;
+    float: right;
+}
+#rateform select, input
+{
+    background-color: #3eb3a5;
+    border-radius: 10px;
+    width: 50%;
+    color: white;
+    font-weight: bold;
+   
+    
 }
 .Button1 a{
     color: white;    

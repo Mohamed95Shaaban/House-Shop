@@ -82,8 +82,8 @@ public class rate {
         {
             DealingWithDB DB = new DealingWithDB();
             DB.Connect();
-            String Columns = "`Advertisment_Id_FK`,`rate_id`,`rate_value`" ;
-            String Values = "'"+Advertisment_Id_FK+"' , '"+rate_id+"' , '"+rate_value+"'" ;
+            String Columns = "`Advertisment_Id_FK`,`rate_value`" ;
+            String Values = "'"+Advertisment_Id_FK+"' , '"+rate_value+"'" ;
             DB.insert(Columns, Values, "rate");
         }
         catch (ClassNotFoundException ex) {

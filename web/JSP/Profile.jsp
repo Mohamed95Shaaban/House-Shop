@@ -20,7 +20,7 @@
     String EMail =res.getString("e-mail");
     String pass =res.getString("password");
     String phone = res.getString("phone");
-    String pic_text = "picture_text";
+    String pic_text = res.getString("picture_text");
     UName += res.getString("username");
     String type = res.getString("type");
     
@@ -58,7 +58,7 @@
                      
                 </li>
                 <li class="hover"><a href="AddPost.jsp">Add Post</a></li>
-                <li class="hover"><a href="index.jsp">Log Out</a></li>
+                <li class="hover"><a href="../index.html">Log Out</a></li>
             </ul>
         </div>
         <div id="info">

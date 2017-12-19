@@ -12,11 +12,11 @@
     Class.forName("com.mysql.jdbc.Driver");
     Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
     String ID = (String) session.getAttribute("Current user");
-
     String postID = request.getParameter("postID");
     // String filePath = "E:/kolya/Sna 4/IA/project/House-Shop/web/scr";
     byte[] imgData = null;
-    out.print(ID);
+    out.print(postID);
+    
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -43,7 +43,7 @@
 
                     </li>
                     <li class="hover"><a href="AddPost.jsp">Add Post</a></li>
-                    <li class="hover"><a href="index.jsp">Log Out</a></li>
+                    <li class="hover"><a href="../index.html">Log Out</a></li>
                 </ul>
             </div>
 
@@ -64,7 +64,7 @@
                     commentCnt = comments.getRow();
 
                     out.print("<div class=\"post\">");
-                    out.print("<div class=\"date\"><img src=\"../scr/"+adv.getString("photo_text")+"\" alt=\"notFound\"></div>");
+                    out.print("<div class=\"date\"><img src=\"../scr/" + adv.getString("photo_text") + "\" alt=\"notFound\"></div>");
                     out.print("<div class=\"post-info\">");
                     out.print("<ul class=\"post-interactions\">");
                     out.print("<li><img id=\"star\" src=\"../scr/star.png\"><a>" + rateCnt + "Rates</a></li>");
@@ -75,34 +75,53 @@
                     out.print("<div class=\"post-content\">");
                     out.print("<p>" + adv.getString("description") + "</p>");
                     out.print("<form id=\"form_id\" class=\"form\" action=\"../EditAdvertisment\">");
-                    out.print("<h5>House Floor: " +"<input type='number' name='house_floor' id='floorID' placeholder=\""+adv.getString("house_floor")+"\" disabled / >"+ "</h5>");
-                    out.print("<h5>House Location: "+"<input type='text' name='house_location' id='locationID' placeholder=\""+ adv.getString("house_location")+"\" disabled / >"  + "</h5>");
-                    out.print("<h5>House Price: " +"<input type='number' name='house_price' id='priceID' placeholder=\""+ adv.getString("house_price") +"\" disabled / >"+ "</h5>");
-                    out.print("<h5>House Size: " +"<input type='number' name='house_size' id='sizeID' placeholder=\""+ adv.getString("house_size") +"\" disabled / >" + "</h5>");
-                    out.print("<h5>House Status: " +"<input type='text' name='Status' id='statusID' placeholder=\""+ adv.getString("Status")+"\" disabled / >"  + "</h5>");
-                    out.print("<h5>House Type: " +"<input type='text' name='type' id='typeID' placeholder=\""+ adv.getString("type")+"\" disabled / >"  + "</h5>");
-                    out.print("<h5>Advertisment Type: " +"<input type='text' name='adtype' id='adtypeID' placeholder=\""+ adv.getString("advertisment_Type")+"\" disabled / >"  + "</h5>");
-                    out.print("<input type='text' name='AdID' value=\""+ postID+"\" hidden / >");
-                    out.print("<a href='AdvertiserData.jsp?postID=\""+postID+"\"'>AdvertiserData</a>");
-                    
-                    out.print("<div class=\"post-img\"><img src=\"../scr/post_img.PNG\" alt=\"notFound\"></div>");
-                    if(userFk.equals(ID))
-                    {
-                        out.print("<button type=\"button\" id=\"EditID\" onclick=\"EditFunction()\">  Edit  </button>");
-                        out.print("<button type=\"button\" id=\"ChangeId\" onclick=\"ChangeFunction()\" style=\"display:none;\">   change   </button>");
+                    out.print("<h5>House Floor: " + "<input type='number' name='house_floor' id='floorID' placeholder=\"" + adv.getString("house_floor") + "\" disabled / >" + "</h5>");
+                    out.print("<h5>House Price: " + "<input type='number' name='house_price' id='priceID' placeholder=\"" + adv.getString("house_price") + "\" disabled / >" + "</h5>");
+                    out.print("<h5>House Size: " + "<input type='number' name='house_size' id='sizeID' placeholder=\"" + adv.getString("house_size") + "\" disabled / >" + "</h5>");
+                    out.print("<h5>House Status: " + "<input type='text' name='Status' id='statusID' placeholder=\"" + adv.getString("Status") + "\" disabled / >" + "</h5>");
+                    out.print("<h5>House Type: " + "<input type='text' name='type' id='typeID' placeholder=\"" + adv.getString("type") + "\" disabled / >" + "</h5>");
+                    out.print("<h5>Advertisment Type: " + "<input type='text' name='adtype' id='adtypeID' placeholder=\"" + adv.getString("advertisment_Type") + "\" disabled / >" + "</h5>");
+                    out.print("<input type='text' name='AdID' value=\"" + postID + "\" hidden / >");
+                    if (userFk.equals(ID)) {
+                        out.print("<button class='Aedit' type=\"button\" id=\"EditID\" onclick=\"EditFunction()\">  Edit  </button>");
+                        out.print("<button class='Achange' type=\"button\" id=\"ChangeId\" onclick=\"ChangeFunction()\" style=\"display:none;\">   change   </button>");
                     }
+                    out.print("<a id='AdvertiserData' href='AdvertiserData.jsp?postID=\"" + postID + "\"'>AdvertiserData</a>");
+
+                    out.print("<div class=\"post-img\"><img src=\"../scr/post_img.PNG\" alt=\"notFound\"></div>");
+
                     out.print("</form>");
                     out.print("</div>");
                     out.print("</div>");
                     out.print("<div class=\"next-comment\">");
                     out.print("<p>" + commentCnt + "Comment</p>");
-                    out.print("<div class=\"Button1\">");
-                    out.print("<a href=\"#\">Rate</a >");
-                    out.print("</div>");  
-                    out.print("</div>");
+                    out.print("<form  id=\"rateform\" action=\"../rateServlet\" >");
+                    out.print(postID);
+                    out.print("<input type=\"hidden\" value=\""+postID+"\" name=\"postid\" >");
+                    out.print("<input type=\"hidden\" value=\""+ID+"\" name=\"usertid\" >");
+                    out.print("<select  name=\"property\">");
+                    out.print("<option disabled selected> Choose from 1 to 5</option>");
+                    out.print("<option   value=\"1\">1</option>");
+                    out.print("<option   value=\"2\">2</option>");
+                    out.print("<option   value=\"3\">3</option>");
+                    out.print("<option   valur=\"4\">4</option>");
+                    out.print("<option   value=\"5\">5</option>");
+                    out.print("</select>");
+                    
+                    out.print("<input  type=\"submit\" value=\"Rate\"/>");
+                    out.print("</div></form>");
                 }
             %>
-
+            
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
             <div class="post-comment">
                 <p class="head">Post A Comment</p>
                 <form class="form" action="../CommentServlet">
@@ -141,7 +160,6 @@
                     out.print("</div>");
                     out.print("</div>");
 //                    
-                    
 
                 }
 
@@ -158,4 +176,4 @@
 //                    {
 //                        
 //                    }
-                        
+

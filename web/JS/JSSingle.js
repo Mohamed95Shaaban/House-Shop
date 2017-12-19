@@ -11,6 +11,8 @@ function EditFunction()
     $('#adtypeID').prop('disabled', false);
     $('#ChangeId').show();
     
+    
+    
 }
 function ChangeFunction()
 {

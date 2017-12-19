@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  * and open the template in the editor.
  */
 
-/**
+/** 
  *
  * @author Ahmed
  */
@@ -83,8 +83,8 @@ public class Notification {
         {
             DealingWithDB DB = new DealingWithDB();
             DB.Connect();
-            String Columns = "`adviertisment_id_fk`,`comment_Id_FK`,`Description`,`notification_ID`,`recieverID`,`senderID`" ;
-            String Values = "'"+advertisment_id_fk+"' , '"+comment_id_FK+"' , '"+Description+"' , '"+notification_ID+"' , '"+recieverID+"' , '"+senderID+"'" ;
+            String Columns = "`adviertisment_id_fk`,`comment_Id_FK`,`Description`,`recieverID`,`senderID`" ;
+            String Values = "'"+advertisment_id_fk+"' , '"+comment_id_FK+"' , '"+Description+"' ,'"+recieverID+"' , '"+senderID+"'" ;
             DB.insert(Columns, Values, "notification");
         }
         catch (ClassNotFoundException ex) {

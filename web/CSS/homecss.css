@@ -5,6 +5,12 @@
     box-sizing: border-box;
     font-family:rockwell;
 }
+h5{
+     font-size: 16px;
+    margin-top: 10px;
+    color: #8e8e8e;
+    margin-bottom: 10px;
+}
 #Container{
     width: 940px;
     height: 2200px;
@@ -90,6 +96,16 @@ ul li a{
     background-color: #bcbcbc;
     margin: 0 auto;
     margin-bottom: 5px;
+}
+ input, select,button
+{
+    background-color: #ebebeb;
+	border-radius: 3px;
+	margin: 5px 0;
+	padding: 7px 10px;
+	color: #888b8b;
+	font-size: 16px;
+        margin-right: 10px;
 }
 .title p{
     text-align: center;
