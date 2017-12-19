@@ -16,15 +16,13 @@ import java.util.logging.Logger;
  * @author Ahmed
  */
 public class Notification {
-    private String advertisment_id_fk , comment_id_FK , Description , notification_ID , recieverID , senderID ;
+    private String advertisment_id_fk  , Description , notification_ID , recieverID , senderID ;
 
     public void setAdvertisment_id_fk(String advertisment_id_fk) {
         this.advertisment_id_fk = advertisment_id_fk;
     }
 
-    public void setComment_id_FK(String comment_id_FK) {
-        this.comment_id_FK = comment_id_FK;
-    }
+    
 
     public void setDescription(String Description) {
         this.Description = Description;
@@ -46,10 +44,7 @@ public class Notification {
         return advertisment_id_fk;
     }
 
-    public String getComment_id_FK() {
-        return comment_id_FK;
-    }
-
+    
     public String getDescription() {
         return Description;
     }
@@ -68,7 +63,6 @@ public class Notification {
 
     public Notification(String advertisment_id_fk, String comment_id_FK, String Description, String notification_ID, String recieverID, String senderID) {
         this.advertisment_id_fk = advertisment_id_fk;
-        this.comment_id_FK = comment_id_FK;
         this.Description = Description;
         this.notification_ID = notification_ID;
         this.recieverID = recieverID;
@@ -83,8 +77,8 @@ public class Notification {
         {
             DealingWithDB DB = new DealingWithDB();
             DB.Connect();
-            String Columns = "`adviertisment_id_fk`,`comment_Id_FK`,`Description`,`notification_ID`,`recieverID`,`senderID`" ;
-            String Values = "'"+advertisment_id_fk+"' , '"+comment_id_FK+"' , '"+Description+"' , '"+notification_ID+"' , '"+recieverID+"' , '"+senderID+"'" ;
+            String Columns = "`adviertisment_id_fk`,`Description`,`recieverID`,`senderID`" ;
+            String Values = "'"+advertisment_id_fk+"' , '"+Description+"' , '"+recieverID+"' , '"+senderID+"'" ;
             DB.insert(Columns, Values, "notification");
         }
         catch (ClassNotFoundException ex) {
@@ -122,7 +116,6 @@ public class Notification {
             while (res.next()) {
                 Notification temp = new Notification();
                 temp.setAdvertisment_id_fk(res.getString("adviertisment_id_fk"));
-                temp.setComment_id_FK(res.getString("comment_Id_FK"));
                 temp.setDescription(res.getString("Description"));
                 temp.setNotification_ID(res.getString("notification_ID"));
                 temp.setRecieverID(res.getString("recieverID"));

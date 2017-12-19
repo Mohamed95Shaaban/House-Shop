@@ -10,18 +10,18 @@
 <%@page import="java.sql.ResultSet"%>
 <%
     Class.forName("com.mysql.jdbc.Driver");
-    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3304/house_buy_and_rent", "root", "");
     Statement Stmt = Con.createStatement();
     String AccountID = (String) session.getAttribute("Current user");
     ResultSet res = Stmt.executeQuery("SELECT * FROM account WHERE `AccountId` = '" + AccountID + "'");
         
     res.next();
-    String UName="";
+    //String UName="";
     String EMail =res.getString("e-mail");
     String pass =res.getString("password");
     String phone = res.getString("phone");
     String pic_text = "picture_text";
-    UName += res.getString("username");
+    //UName += res.getString("username");
     String type = res.getString("type");
     
 
@@ -68,11 +68,11 @@
                     <h3>Photo</h3>
                 </div>
                 
-                <input type="text" name="name" placeholder= <%= UName  %> id="nameID" disabled/>    
+                <input type="text" name="name" placeholder= <%= res.getString("username")  %> id="nameID" disabled/>    
                 <input type="text" name="mail" placeholder= <%= EMail %> id="e-mailID" disabled/>    
                 <input type="text" name="pass" placeholder= <%= pass %> id="passID" disabled/>
                 <input type="text" name="phone" placeholder= <%= phone %> id="phoneID" disabled/>
-                <img src="../scr/<%=pic_text%>" alt="notfound" /> <br> 
+                <img src="../scr/<%= pic_text%>" alt="notfound" /> <br> 
                 <button type="button" id="EditID" onclick="EditFunction()">Edit</button>  
                 <button type="button" id="ChangeId" onclick="ChangeFunction();" style="display:none;">change</button>
 

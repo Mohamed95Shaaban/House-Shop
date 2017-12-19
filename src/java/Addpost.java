@@ -11,8 +11,10 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -46,56 +48,141 @@ public class Addpost extends HttpServlet {
         String description = request.getParameter("body");
         String houseState = request.getParameter("house_state");
         String advertismentType = request.getParameter("advertisment_type");
-        /**
-         * ******************************************************
-         */
-//            Advertisment advertisment = new Advertisment();
-//            advertisment.setHouse_size(houseSize);
-//            advertisment.setHouse_price(housePrice);
-//            advertisment.setDescription(description);
-//            advertisment.setType(houseType);
-//            advertisment.setLat(lat);
-//            advertisment.setLon(lon);
-//            advertisment.setHouse_floor(houseFloor);
-//            advertisment.setStatus(houseState);
-//            advertisment.setPhoto_text("k");
-//            advertisment.setAdvertisment_Type(advertismentType);
-//            advertisment.setSuspended("0");
-
-        /**
-         * **********************************************************
-         */
+        
         HttpSession session = request.getSession(true);
         session = (HttpSession) request.getServletContext().getAttribute("session");
         String userid = (String) session.getAttribute("Current user");
-        //advertisment.setAccountId_fk(userid);
-        //   out.println("hhhhhh => " + advertisment.getAccountId_fk());
-        // advertisment.AddAdvertisment();
-        Part part = request.getPart("houseImg");
-
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
-            String houseID = "6";
-            Statement Stmt = Con.createStatement();
-
-            String UPLOAD_LOCATION = "E:/kolya/Sna 4/IA/project/House-Shop/web/scr";
+        
+        /**
+         * ******************************************************
+         */
+            Advertisment advertisment = new Advertisment();
+            advertisment.setHouse_size(houseSize);
+            advertisment.setHouse_price(housePrice);
+            advertisment.setDescription(description);
+            advertisment.setType(houseType);
+            advertisment.setLat(lat);
+            advertisment.setLon(lon);
+            advertisment.setHouse_floor(houseFloor);
+            advertisment.setStatus(houseState);
+            advertisment.setAdvertisment_Type(advertismentType);
+            advertisment.setSuspended("0");
+            advertisment.setAccountId_fk(userid);
+        
+            Part part = request.getPart("houseImg");
+            String UPLOAD_LOCATION = "E:\\educational books\\Fourth Year\\Internet Application\\NewpdaatedHouseShop\\House-Shop\\web\\scr";
             Part filePart = request.getPart("houseImg");
-            String name = filePart.getSubmittedFileName();
-            Stmt.executeUpdate("INSERT INTO  advertisment VALUES('" + houseSize + "','" + housePrice + "','" + houseType + "','" + houseType + "','" + description + "','" + houseState + "','" + houseID + "','" + 0 + "','" + userid + "','" + advertismentType + "','" + lat + "','" + lon + "','" + name + "')");
-            Stmt.close();
-            Con.close();
+            String filename = filePart.getSubmittedFileName();
+            advertisment.setPhoto_text(filename);
+            
             InputStream fileContent = filePart.getInputStream();
-            File fileSaveDir = new File(UPLOAD_LOCATION,name);
-
+            File fileSaveDir = new File(UPLOAD_LOCATION,filename);
             Files.copy(filePart.getInputStream(), fileSaveDir.toPath());
-            response.sendRedirect("JSP/Home.jsp");
-
-        } catch (ClassNotFoundException ex) {
+            
+            advertisment.AddAdvertisment();
+        /**
+         * **********************************************************
+         */
+ 
+            ArrayList<Alert> allAlerts = new ArrayList<>();
+            DealingWithDB DB = new DealingWithDB() ;
+            try
+            {
+            DB.Connect(); 
+            ResultSet res = DB.select("*", "alert", "1") ;
+            while (res.next())
+            {
+                Alert temp = new Alert();
+                temp.setAccountID_Fk(res.getString("AccountID_FK"));
+                temp.setAlertID(res.getString("AlertID"));
+                temp.setPorpertyValue(res.getString("propertyValue"));
+                temp.setPropertyAlert(res.getString("propertyAlert"));
+                allAlerts.add(temp);
+            }
+            
+            for (int i=0 ; i<allAlerts.size() ; i++)
+            {
+                String Column = allAlerts.get(i).getPropertyAlert() ;
+                String Value = allAlerts.get(i).getPorpertyValue() ;
+                if (Column.equals("house_price"))
+                {
+                    if (advertisment.getHouse_price().equals(Value))
+                    {
+                        Notification notification = new Notification() ;
+                        notification.setAdvertisment_id_fk(advertisment.getHouseID());
+                        notification.setRecieverID(allAlerts.get(i).getAccountID_Fk());
+                        notification.setSenderID(advertisment.getAccountId_fk());
+                        notification.setDescription("Check This Advertisment");
+                        notification.AddNotification();
+                    }
+                }
+                else if (Column.equals("house_size"))
+                {
+                    if (advertisment.getHouse_size().equals(Value))
+                    {
+                        Notification notification = new Notification() ;
+                        notification.setAdvertisment_id_fk(advertisment.getHouseID());
+                        notification.setRecieverID(allAlerts.get(i).getAccountID_Fk());
+                        notification.setSenderID(advertisment.getAccountId_fk());
+                        notification.setDescription("Check This Advertisment");
+                        notification.AddNotification();
+                    }
+                }
+                else if (Column.equals("type"))
+                {
+                    if (advertisment.getType().equals(Value))
+                    {
+                        Notification notification = new Notification() ;
+                        notification.setAdvertisment_id_fk(advertisment.getHouseID());
+                        notification.setRecieverID(allAlerts.get(i).getAccountID_Fk());
+                        notification.setSenderID(advertisment.getAccountId_fk());
+                        notification.setDescription("Check This Advertisment");
+                        notification.AddNotification();
+                    }
+                }
+                else if (Column.equals("Status"))
+                {
+                    if (advertisment.getStatus().equals(Value))
+                    {
+                        Notification notification = new Notification() ;
+                        notification.setAdvertisment_id_fk(advertisment.getHouseID());
+                        notification.setRecieverID(allAlerts.get(i).getAccountID_Fk());
+                        notification.setSenderID(advertisment.getAccountId_fk());
+                        notification.setDescription("Check This Advertisment");
+                        notification.AddNotification();
+                    }
+                }
+                else if (Column.equals("advertisment_Type"))
+                {
+                    if (advertisment.getAdvertisment_Type().equals(Value))
+                    {
+                        Notification notification = new Notification() ;
+                        notification.setAdvertisment_id_fk(advertisment.getHouseID());
+                        notification.setRecieverID(allAlerts.get(i).getAccountID_Fk());
+                        notification.setSenderID(advertisment.getAccountId_fk());
+                        notification.setDescription("Check This Advertisment");
+                        notification.AddNotification();
+                    }
+                }
+            }
+            
+                    
+            }
+            catch (ClassNotFoundException ex) {
             Logger.getLogger(Addpost.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Addpost.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
+
+     
+        
+        response.sendRedirect("JSP/Home.jsp");
+
+        
+        /**************************************************/
+        /*************************************************/
+        /********************************/
 
     }
 

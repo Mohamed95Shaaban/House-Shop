@@ -10,13 +10,12 @@
 <%@page import="java.sql.Connection"%>
 <%
     Class.forName("com.mysql.jdbc.Driver");
-    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3304/house_buy_and_rent", "root", "");
     String ID = (String) session.getAttribute("Current user");
 
     String postID = request.getParameter("postID");
     // String filePath = "E:/kolya/Sna 4/IA/project/House-Shop/web/scr";
     byte[] imgData = null;
-    out.print(ID);
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -76,7 +75,6 @@
                     out.print("<p>" + adv.getString("description") + "</p>");
                     out.print("<form id=\"form_id\" class=\"form\" action=\"../EditAdvertisment\">");
                     out.print("<h5>House Floor: " +"<input type='number' name='house_floor' id='floorID' placeholder=\""+adv.getString("house_floor")+"\" disabled / >"+ "</h5>");
-                    out.print("<h5>House Location: "+"<input type='text' name='house_location' id='locationID' placeholder=\""+ adv.getString("house_location")+"\" disabled / >"  + "</h5>");
                     out.print("<h5>House Price: " +"<input type='number' name='house_price' id='priceID' placeholder=\""+ adv.getString("house_price") +"\" disabled / >"+ "</h5>");
                     out.print("<h5>House Size: " +"<input type='number' name='house_size' id='sizeID' placeholder=\""+ adv.getString("house_size") +"\" disabled / >" + "</h5>");
                     out.print("<h5>House Status: " +"<input type='text' name='Status' id='statusID' placeholder=\""+ adv.getString("Status")+"\" disabled / >"  + "</h5>");
@@ -154,8 +152,4 @@
         </div>
     </body>
 </html>
-//                    if(ID.equals("1"))
-//                    {
-//                        
-//                    }
-                        
+               
