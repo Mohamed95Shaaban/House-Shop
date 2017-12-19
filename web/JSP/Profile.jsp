@@ -10,7 +10,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%
     Class.forName("com.mysql.jdbc.Driver");
-    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3304/house_buy_and_rent", "root", "");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
     Statement Stmt = Con.createStatement();
     String AccountID = (String) session.getAttribute("Current user");
     ResultSet res = Stmt.executeQuery("SELECT * FROM account WHERE `AccountId` = '" + AccountID + "'");
@@ -78,7 +78,24 @@
 
             </form> 
         </div>
+                <Form action="../MakeAlert">
+            
+                Choose Specific property  
+                <select name="property">
+                     <option   value="house_price">Price</option>
+                     <option   value="house_size">Size</option>
+                     <option  value="type">House Type</option>
+                     <option  valur="Status"> State </option>
+                     <option  value="advertisment_Type">ADType</option> 
+                </select>
+                <br/>
+                <input type="text" name="searchQury"/>
+                
+                <input type="submit" value="MakeAlert"/>
+            
+            </form>
+                
         </div>
-        
+                
     </body>
 </html>

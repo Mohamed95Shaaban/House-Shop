@@ -18,7 +18,7 @@ public class DealingWithDB {
       
       // Setup the connection with the DB
       connection = DriverManager
-                   .getConnection("jdbc:mysql://" + "localhost:3304" + "/house_buy_and_rent?"
+                   .getConnection("jdbc:mysql://" + "localhost:3306" + "/house_buy_and_rent?"
                    + "user=" + "root"  );
     }
     
@@ -54,17 +54,5 @@ public class DealingWithDB {
                 
     }
     
-    public static void writeResultSet(ResultSet resultSet) throws SQLException 
-    {
-        int numOfColumns = resultSet.getMetaData().getColumnCount() ;
-      
-        while (resultSet.next()) {
-            for  (int i = 1; i<= numOfColumns; i++)
-            {
-                System.out.print(resultSet.getString(i)+ "        ");
-            }
-            System.out.println("");
 
-        }
-  }
 }
