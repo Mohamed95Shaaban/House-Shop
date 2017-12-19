@@ -7,6 +7,8 @@
         <title>
             Add Post
         </title>
+        <script src="JS/jquery-3.1.0.min.js"> </script>
+  
         <link rel="stylesheet" href="../CSS/style.css">
         <link rel="stylesheet" href="../CSS/homecss.css" type="text/css">
         
@@ -48,19 +50,18 @@
             <div id="form">
                 <form action="../Addpost" method="post" enctype="multipart/form-data"  >
                
-                 <input type="number" name = "house_size" placeholder="Hoise Size meters " required>
-                 <input type="number" name="house_price"  placeholder="Hoise price L.E" required>
-                 <input type="text" name="house_type" placeholder="1 For villa / 0 For Studio" required>
+                 <input type="number" name = "house_size" placeholder="House Size meters " required>
+                 <input type="number" name="house_price"  placeholder="House price L.E" required>
+                 <input type="text" name="house_type" placeholder="villa or studio" required>
                  <div id="map"></div>
                  <input type="hidden" name="lat" id="lat"  />
                  <input type="hidden" name="lon" id="lon"   />
                  <input type="number" name="house_floor" placeholder="House floor" required>
                 <textarea placeholder="Description"  cols="10" rows="5" name="body" required></textarea>
-                <input type="text" name="house_state" placeholder="Finished/ half finished/etc" required>
-                <input type="number" name="advertisment_type" placeholder="1 For Rent / 0 For Sale" required>
+                <input type="text" name="house_state" placeholder="finished/ half finished/etc" required>
+                <input type="text" name="advertisment_type" placeholder="rent or sell" required>
                 <input type="file" name="houseImg" accept="image/gif, image/jpeg, image/png"  >
-               <input type="file" name="Mfile" accept="image/gif, image/jpeg, image/png" multiple>
-               
+               <label id="error"></label>
                 <input type="submit" value="Post" class="submit">
             </form>
             </div>

@@ -34,7 +34,6 @@ public class EditAdvertisment extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String HFloor = request.getParameter("house_floor");
-            String HLocation = request.getParameter("house_location");
             String HPrice = request.getParameter("house_price");
             String HSize = request.getParameter("house_size");
             String HStatus = request.getParameter("Status");
@@ -48,10 +47,6 @@ public class EditAdvertisment extends HttpServlet {
             if (HFloor.length()>0)
             {
                 adv.updateAdvertisment("house_floor", HFloor);
-            }
-            if (HLocation.length()>0)
-            {
-                adv.updateAdvertisment("house_location", HLocation);
             }
             if (HPrice.length()>0)
             {

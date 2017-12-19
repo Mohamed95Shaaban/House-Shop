@@ -42,7 +42,6 @@ public class rateServlet extends HttpServlet {
            
            Notification userNotify= new Notification();
            userNotify.setAdvertisment_id_fk(postID);
-           userNotify.setComment_id_FK("1");
            userNotify.setDescription("Someone Rated your post");
            userNotify.setSenderID(userID);
            userNotify.setRecieverID("4");

@@ -10,7 +10,7 @@
 <%@page import="java.sql.Connection"%>
 <%
     Class.forName("com.mysql.jdbc.Driver");
-    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3304/house_buy_and_rent", "root", "");
     String ID = (String) session.getAttribute("Current user");
     String postID = request.getParameter("postID");
     // String filePath = "E:/kolya/Sna 4/IA/project/House-Shop/web/scr";
@@ -172,8 +172,4 @@
         </div>
     </body>
 </html>
-//                    if(ID.equals("1"))
-//                    {
-//                        
-//                    }
-
+               

@@ -12,6 +12,7 @@ public class Advertisment {
                    House_price , House_size , Status , Suspended , Type , AccountId_fk , advertisment_Type;
 
     public Advertisment() {
+        removed="0" ;
     }
 
     public Advertisment(String Description, String HouseID, String House_floor, String lat,String lon, String House_price, String House_size, String Status, String Suspended, String Type, String AccountId ,String advertisment_Type , String photo_text , String removed) {
@@ -151,7 +152,7 @@ public class Advertisment {
         try{
         DealingWithDB DB =new DealingWithDB() ;
         DB.Connect();
-        String Columns = "`HouseID` , `description` , `house_floor` , `lat, lon` , `house_price` ,"
+        String Columns = "`HouseID` , `description` , `house_floor` , `lat` , `lon` , `house_price` ,"
                        + " `house_size` , `removed` , `status` , `suspended` , `type` , `AccountId_fk` , `advertisment_Type` , `photo_text`" ;
         ResultSet res = DB.select(" MAX(HouseID) ", "advertisment", "1") ;
         res.next() ; 
@@ -253,7 +254,7 @@ public class Advertisment {
         {
             DealingWithDB DB = new DealingWithDB();
             DB.Connect();
-            Condition += " and `suspended`='0'" ;
+            Condition += " and `suspended`='0' and `removed`='0'" ;
             ResultSet res=DB.select("*", "advertisment", Condition) ; 
             while (res.next()) {
                 Advertisment temp = new Advertisment();
@@ -270,6 +271,7 @@ public class Advertisment {
                 temp.setStatus(res.getString("status"));
                 temp.setType(res.getString("type"));
                 temp.setSuspended(res.getString("suspended"));
+                temp.setRemoved(res.getString("removed"));
                 Ads.add(temp);
             }
             

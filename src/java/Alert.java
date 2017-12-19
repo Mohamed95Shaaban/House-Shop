@@ -18,16 +18,25 @@ import java.util.logging.Logger;
  * @author Antr
  */
 public class Alert {
-    private String  propertyAlert , porpertyValue ,AccountID_Fk ;
+    private String  propertyAlert , porpertyValue ,AccountID_Fk , AlertID ;
+
+    public void setAlertID(String AlertID) {
+        this.AlertID = AlertID;
+    }
+
+    public String getAlertID() {
+        return AlertID;
+    }
 
     public Alert() {
     }
 
-    public Alert( String propertyAlert, String porpertyValue, String AccountID_Fk) {
+    public Alert( String propertyAlert, String porpertyValue, String AccountID_Fk ,String AlertID) {
         
         this.propertyAlert = propertyAlert;
         this.porpertyValue = porpertyValue;
         this.AccountID_Fk = AccountID_Fk;
+        this.AlertID = AlertID;
     }
 
    

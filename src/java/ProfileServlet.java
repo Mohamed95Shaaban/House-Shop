@@ -48,7 +48,7 @@ public class ProfileServlet extends HttpServlet {
             String NewPass = request.getParameter("pass");
             String NewPhone = request.getParameter("phone");
            
-            String UPLOAD_LOCATION = "E:/kolya/Sna 4/IA/project/House-Shop/web/scr";
+            String UPLOAD_LOCATION = "E:\\educational books\\Fourth Year\\Internet Application\\NewpdaatedHouseShop\\House-Shop\\web\\scr";
             Part filePart = request.getPart("file");
             String name = filePart.getSubmittedFileName();
             Account account = new Account();
@@ -68,12 +68,15 @@ public class ProfileServlet extends HttpServlet {
             if (NewPhone.length() > 0) {
                 account.Update("phone", NewPhone, tableName);
             }
-            
+            if (name.length()>0)
+            {
                 account.Update("picture_text", name, tableName);
-                
                 File fileSaveDir = new File(UPLOAD_LOCATION, name);
                 Files.copy(filePart.getInputStream(), fileSaveDir.toPath());
                  System.out.println("photo Name: "+name);
+            }
+                
+                
                 response.sendRedirect("JSP/Profile.jsp");
     }
 

@@ -6,7 +6,7 @@
 <%
     // hna code el connection 
     Class.forName("com.mysql.jdbc.Driver");
-    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3306/house_buy_and_rent", "root", "");
+    Connection Con = DriverManager.getConnection("jdbc:mysql://localhost:3304/house_buy_and_rent", "root", "");
 
 %>
 
@@ -52,7 +52,7 @@
                     out.print(" <div id='notify'> ");
                     String d= RS.getString("Description");
                     String id= RS.getString("adviertisment_id_fk");
-                    out.print("<a href=\"single.jsp?id="+ id + "\">"+d+"</a>"); 
+                    out.print("<a href=\"single.jsp?postID="+ id + "\">"+d+"</a>"); 
                     out.print("</div> ");
                 }
 
