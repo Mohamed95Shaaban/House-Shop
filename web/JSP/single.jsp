@@ -88,7 +88,7 @@
                     }
                     out.print("<a id='AdvertiserData' href='AdvertiserData.jsp?postID=\"" + postID + "\"'>AdvertiserData</a>");
 
-                    out.print("<div class=\"post-img\"><img src=\"../scr/post_img.PNG\" alt=\"notFound\"></div>");
+                    out.print("<div class=\"post-img\"><img src=\"../scr/"+adv.getString("photo_text")+"\" alt=\"notFound\"></div>");
 
                     out.print("</form>");
                     out.print("</div>");

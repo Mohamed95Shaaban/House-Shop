@@ -41,7 +41,6 @@ function placeMarker(map,location) {
     infowindow.setContent('Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng());
     infowindow.open(map, marker);
     map.panTo(location);
-    alert(location.pathname);
     document.getElementById("lat").value = location.lat();
     document.getElementById("lon").value = location.lng();
    

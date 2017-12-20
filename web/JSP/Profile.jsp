@@ -79,8 +79,9 @@
         </div>
                 <Form action="../MakeAlert">
             
-                Choose Specific property  
+                  
                 <select name="property">
+                    <option   disabled selected>Choose Specific property</option>
                      <option   value="house_price">Price</option>
                      <option   value="house_size">Size</option>
                      <option  value="type">House Type</option>
